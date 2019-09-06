@@ -1,5 +1,8 @@
 package com.duofuen.permission.domain.entity;
 
+import com.duofuen.permission.common.Constant;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,11 +14,11 @@ public class Menu {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer sort;
+    private Integer sort = Constant.SORT;
     private Boolean isValid = true;
-    private String version;
-    private Date createTime;
-    private Date updateTime;
+    private Integer version = Constant.VERSION;
+    private long createTime;
+    private long updateTime;
 
     @Column(nullable = false)
     private String name = "";
@@ -23,15 +26,23 @@ public class Menu {
     @Column(nullable = false)
     private String url = "";
 
-    @Column(nullable = false)
-    private Boolean hasSubMenu = true;
-
     @OneToMany(mappedBy = "parentMenu", fetch = FetchType.EAGER)
     private List<Menu> subMenus = new ArrayList<>();
 
+    @Column(name = "parent_id")
+    private Integer parentId;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_id", insertable = false, updatable = false)
+    @JsonIgnore
     private Menu parentMenu;
+
+    @Column(name = "project_id")
+    private Integer projectId;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "project_id", insertable = false, updatable = false)
+    private Project project;
 
     public Integer getId() {
         return id;
@@ -57,28 +68,44 @@ public class Menu {
         isValid = valid;
     }
 
-    public String getVersion() {
+    public Integer getVersion() {
         return version;
     }
 
-    public void setVersion(String version) {
+    public void setVersion(Integer version) {
         this.version = version;
     }
 
-    public Date getCreateTime() {
+    public long getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(long createTime) {
         this.createTime = createTime;
     }
 
-    public Date getUpdateTime() {
+    public long getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
+    public void setUpdateTime(long updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public Integer getProjectId() {
+        return projectId;
+    }
+
+    public void setProjectId(Integer projectId) {
+        this.projectId = projectId;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
     }
 
     public String getName() {
@@ -113,11 +140,12 @@ public class Menu {
         this.parentMenu = parentMenu;
     }
 
-    public Boolean getHasSubMenu() {
-        return hasSubMenu;
+
+    public Integer getParentId() {
+        return parentId;
     }
 
-    public void setHasSubMenu(Boolean hasSubMenu) {
-        this.hasSubMenu = hasSubMenu;
+    public void setParentId(Integer parentId) {
+        this.parentId = parentId;
     }
 }

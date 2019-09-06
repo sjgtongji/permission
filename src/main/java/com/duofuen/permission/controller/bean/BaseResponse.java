@@ -1,30 +1,33 @@
 package com.duofuen.permission.controller.bean;
 
+import com.duofuen.permission.common.ErrorNum;
+
+
+
 public class BaseResponse<T> {
 
-    protected Integer errorCode;
-    protected String errorMessage;
+    protected Integer code;
+    protected String message;
     protected T data;
 
     protected BaseResponse() {
-        errorCode = 0;
-        errorMessage = "";
+        setResult(ErrorNum.SUCCESS);
     }
 
-    public Integer getErrorCode() {
-        return errorCode;
+    public Integer getCode() {
+        return code;
     }
 
-    public void setErrorCode(Integer errorCode) {
-        this.errorCode = errorCode;
+    public void setCode(Integer code) {
+        this.code = code;
     }
 
-    public String getErrorMessage() {
-        return errorMessage;
+    public String getMessage() {
+        return message;
     }
 
-    public void setErrorMessage(String errorMessage) {
-        this.errorMessage = errorMessage;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public T getData() {
@@ -33,6 +36,11 @@ public class BaseResponse<T> {
 
     public void setData(T data) {
         this.data = data;
+    }
+
+    public void setResult(ErrorNum error){
+        this.code = error.getCode();
+        this.message = error.getMsg();
     }
 
 }

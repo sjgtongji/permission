@@ -1,5 +1,7 @@
 package com.duofuen.permission.domain.entity;
 
+import com.duofuen.permission.common.Constant;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,14 +13,14 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer sort;
+    private Integer sort = Constant.SORT;
     private Boolean isValid = true;
-    private String version;
-    private Date createTime;
-    private Date updateTime;
+    private Integer version = Constant.VERSION;
+    private long createTime;
+    private long updateTime;
 
     @Column(nullable = false)
-    private String name = "";
+    private String name;
 
     @ManyToMany
     @JoinTable(name = "dfe_role_menu",
@@ -26,6 +28,12 @@ public class Role {
             inverseJoinColumns = {@JoinColumn(name = "menu_id", referencedColumnName = "id")})
     private List<Menu> menus = new ArrayList<>();
 
+    @Column(name = "project_id")
+    private Integer projectId;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "project_id", insertable = false, updatable = false)
+    private Project project;
 
     public Integer getId() {
         return id;
@@ -43,28 +51,44 @@ public class Role {
         isValid = valid;
     }
 
-    public String getVersion() {
+    public Integer getVersion() {
         return version;
     }
 
-    public void setVersion(String version) {
+    public void setVersion(Integer version) {
         this.version = version;
     }
 
-    public Date getCreateTime() {
+    public long getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(long createTime) {
         this.createTime = createTime;
     }
 
-    public Date getUpdateTime() {
+    public long getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
+    public void setUpdateTime(long updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public Integer getProjectId() {
+        return projectId;
+    }
+
+    public void setProjectId(Integer projectId) {
+        this.projectId = projectId;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
     }
 
     public String getName() {
