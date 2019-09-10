@@ -1,10 +1,7 @@
 package com.duofuen.permission.controller;
 
 import com.duofuen.permission.common.ErrorNum;
-import com.duofuen.permission.controller.bean.CreateUserRequest;
-import com.duofuen.permission.controller.bean.CreateUserResponse;
-import com.duofuen.permission.controller.bean.LoginRequest;
-import com.duofuen.permission.controller.bean.LoginResponse;
+import com.duofuen.permission.controller.bean.*;
 import com.duofuen.permission.domain.entity.Project;
 import com.duofuen.permission.domain.entity.Role;
 import com.duofuen.permission.domain.entity.User;
@@ -40,8 +37,33 @@ public class UserRestController {
     @ResponseBody
     public LoginResponse login(@RequestBody LoginRequest request) {
         try {
-            log.info("手机登录, {}", request);
-            LoginResponse response =  userService.login(request);
+            log.info("登录", request);
+            LoginResponse response = new LoginResponse();
+            if(request.getAppId() == null || request.getAppId().equals("")){
+                response.setResult(ErrorNum.EMPTY_APPID);
+                return response;
+            }
+
+            if(request.getAppSecret() == null || request.getAppSecret().equals("")){
+                response.setResult(ErrorNum.EMTPY_APPSECRET);
+                return response;
+            }
+            if(request.getUserName() == null || request.getUserName().equals("")){
+                response.setResult(ErrorNum.INVALID_PARAM_USERNAME);
+                return response;
+            }
+
+            if(request.getPassword() == null || request.getPassword().equals("")){
+                response.setResult(ErrorNum.INVALID_PARAM_PWD);
+                return response;
+            }
+            Optional<User> userOptional = userService.findByUsernameAndPassword(request.getUserName() , request.getPassword());
+            if(!userOptional.isPresent()){
+                response.setResult(ErrorNum.INVALID_PARAM_USERNAME);
+                return response;
+            }
+            User user = userOptional.get();
+            response.getData().setToken("");
             log.info("登陆成功！");
             return response;
         } catch (Exception e) {
@@ -118,5 +140,51 @@ public class UserRestController {
             response.setMessage(e.getMessage());
             return response;
         }
+    }
+    @Transactional
+    @PostMapping("/setRole")
+    @ResponseBody
+    public SetRoleResponse setRole(@RequestBody SetRoleRequest request){
+        log.info("设置用户角色", request);
+        SetRoleResponse response = new SetRoleResponse();
+        if(request.getUserId() == null){
+            response.setResult(ErrorNum.INVALID_PARAM_USER_ID);
+            log.info("设置用户角色失败，userId参数错误");
+            return response;
+        }
+        if(request.getRoleId() == null){
+            response.setResult(ErrorNum.INVALID_PARAM_ROLE_ID);
+            log.info("设置用户角色失败，roleId参数错误");
+            return response;
+        }
+
+        Optional<User> userOptional = userService.queryById(request.getUserId());
+        if(!userOptional.isPresent()){
+            response.setResult(ErrorNum.INVALID_PARAM_USER_ID);
+            log.info("设置用户角色失败，userId参数错误");
+            return response;
+        }
+
+        Optional<Role> roleOptional = roleService.findById(request.getRoleId());
+        if(!roleOptional.isPresent()){
+            response.setResult(ErrorNum.INVALID_PARAM_ROLE_ID);
+            log.info("设置用户角色失败，roleId参数错误");
+            return response;
+        }
+        User user = userOptional.get();
+        Role role = roleOptional.get();
+        if(user.getProjectId() == null || role.getProjectId() == null || !user.getProjectId().equals(role.getProjectId())){
+            response.setResult(ErrorNum.INVALID_PARAM_USER_ID);
+            log.info("设置用户角色失败，userId参数错误");
+            return response;
+        }
+
+        user.setRole(role);
+        user.setRoleId(role.getId());
+        userService.save(user);
+        response.setResult(ErrorNum.SUCCESS);
+        log.info("设置用户角色完成");
+        return response;
+
     }
 }

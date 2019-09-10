@@ -36,4 +36,8 @@ public class UserService{
         return userRepo.save(user);
     }
 
+    public Optional<User> findByUsernameAndPassword(String username, String password){
+        return userRepo.findByUserNameAndPassword(username , password);
+    }
+
 }

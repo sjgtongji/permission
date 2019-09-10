@@ -2,7 +2,7 @@ package com.duofuen.permission.controller.bean;
 
 public class LoginRequest{
     private String appId;
-    private String appKey;
+    private String appSecret;
     private String userName;
     private String password;
 
@@ -14,12 +14,12 @@ public class LoginRequest{
         this.appId = appId;
     }
 
-    public String getAppKey() {
-        return appKey;
+    public String getAppSecret() {
+        return appSecret;
     }
 
-    public void setAppKey(String appKey) {
-        this.appKey = appKey;
+    public void setAppSecret(String appSecret) {
+        this.appSecret = appSecret;
     }
 
     public String getUserName() {
