@@ -2,7 +2,7 @@ package com.duofuen.permission.controller.bean;
 
 public class CreateProjectRequest {
     private String token;
-    private String projectName;
+    private String name;
     private String companyName;
     private String phone;
     private String email;
@@ -15,12 +15,12 @@ public class CreateProjectRequest {
         this.token = token;
     }
 
-    public String getProjectName() {
-        return projectName;
+    public String getName() {
+        return name;
     }
 
-    public void setProjectName(String projectName) {
-        this.projectName = projectName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getCompanyName() {

@@ -11,6 +11,7 @@ import com.duofuen.permission.service.UserService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,17 +20,20 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/rest/user")
+@CrossOrigin
 public class UserRestController {
     private static Logger log = LogManager.getLogger();
 
     private final UserService userService;
     private final ProjectService projectService;
     private final RoleService roleService;
+    private final BCryptPasswordEncoder encoder;
     @Autowired
-    public UserRestController(UserService userService, ProjectService projectService, RoleService roleService) {
+    public UserRestController(UserService userService, ProjectService projectService, RoleService roleService , BCryptPasswordEncoder encoder) {
         this.userService = userService;
         this.projectService = projectService;
         this.roleService = roleService;
+        this.encoder = encoder;
     }
 
     @Transactional
@@ -37,35 +41,7 @@ public class UserRestController {
     @ResponseBody
     public LoginResponse login(@RequestBody LoginRequest request) {
         try {
-            log.info("登录", request);
-            LoginResponse response = new LoginResponse();
-            if(request.getAppId() == null || request.getAppId().equals("")){
-                response.setResult(ErrorNum.EMPTY_APPID);
-                return response;
-            }
-
-            if(request.getAppSecret() == null || request.getAppSecret().equals("")){
-                response.setResult(ErrorNum.EMTPY_APPSECRET);
-                return response;
-            }
-            if(request.getUserName() == null || request.getUserName().equals("")){
-                response.setResult(ErrorNum.INVALID_PARAM_USERNAME);
-                return response;
-            }
-
-            if(request.getPassword() == null || request.getPassword().equals("")){
-                response.setResult(ErrorNum.INVALID_PARAM_PWD);
-                return response;
-            }
-            Optional<User> userOptional = userService.findByUsernameAndPassword(request.getUserName() , request.getPassword());
-            if(!userOptional.isPresent()){
-                response.setResult(ErrorNum.INVALID_PARAM_USERNAME);
-                return response;
-            }
-            User user = userOptional.get();
-            response.getData().setToken("");
-            log.info("登陆成功！");
-            return response;
+            return userService.login(request);
         } catch (Exception e) {
             log.error("登陆失败！");
             log.error(e);

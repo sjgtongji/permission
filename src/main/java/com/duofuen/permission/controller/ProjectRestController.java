@@ -1,5 +1,6 @@
 package com.duofuen.permission.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.duofuen.permission.common.ErrorNum;
 import com.duofuen.permission.controller.bean.*;
 import com.duofuen.permission.domain.entity.Project;
@@ -10,17 +11,21 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import java.util.*;
 
 @RestController
 @RequestMapping(path = "/rest/project")
+@CrossOrigin
 public class ProjectRestController {
     private static Logger log = LogManager.getLogger();
 
@@ -40,7 +45,7 @@ public class ProjectRestController {
             Date date = new Date();
             Project project = new Project();
             project.setCompanyName(request.getCompanyName());
-            project.setName(request.getProjectName());
+            project.setName(request.getName());
             project.setEmail(request.getEmail());
             project.setPhone(request.getPhone());
             project.setAppId(new Long(date.getTime()).toString() + projectService.count());
@@ -72,19 +77,99 @@ public class ProjectRestController {
     public QueryProjectResponse query(QueryProjectRequest request) {
         try {
             log.info("查询项目", request);
-            Page<Project> page = projectService.findAll(PageRequest.of(request.getPage(), request.getSize(), Sort.Direction.DESC, "createTime"));
             QueryProjectResponse response = new QueryProjectResponse();
             List<Project> projects = new ArrayList<>();
+            if(request.getCurrent() < 1 ){
+                request.setCurrent(1);
+            }
+            if(request.getPageSize() < 0){
+                request.setPageSize(20);
+            }
+            Page<Project> page = null;
+            Pageable pageable = PageRequest.of(request.getCurrent()-1, request.getPageSize(), Sort.Direction.DESC, "createTime");
+            Specification<Project> specification = new Specification<Project>() {
+                @Override
+                public Predicate toPredicate(Root<Project> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                    List<Predicate> predicates = new ArrayList<>();
+                    if(request.getName() != null && !request.getName().equals("")){
+                        predicates.add(criteriaBuilder.like(root.get("name").as(String.class), "%" + request.getName() + "%"));
+                    }
+
+                    if(request.getCompanyName() != null && !request.getCompanyName().equals("")){
+                        predicates.add(criteriaBuilder.like(root.get("companyName").as(String.class), "%" +request.getCompanyName()+ "%"));
+                    }
+
+                    if(request.getPhone() != null && !request.getPhone().equals("")){
+                        predicates.add(criteriaBuilder.like(root.get("phone").as(String.class), "%" +request.getPhone()+ "%"));
+                    }
+
+                    if(request.getEmail() != null && !request.getEmail().equals("")){
+                        predicates.add(criteriaBuilder.like(root.get("email").as(String.class), "%" +request.getEmail()+ "%"));
+                    }
+                    Predicate[] p = new Predicate[predicates.size()];
+                    return criteriaBuilder.and(predicates.toArray(p));
+                }
+            };
+            page = projectService.findAll(specification , pageable);
+
             for(Project item : page){
                 projects.add(item);
             }
-            response.getData().setList(projects);
+            response.getData().setData(projects);
+            response.getData().setCurrent(request.getCurrent());
+            response.getData().setPageSize(request.getPageSize());
+            response.getData().setTotal((int) projectService.count(specification));
+            response.getData().setSuccess(true);
             log.error("查询项目成功！");
             return response;
         } catch (Exception e) {
             log.error("查询项目失败！");
             log.error(e);
             QueryProjectResponse response = new QueryProjectResponse();
+            response.setResult(ErrorNum.FAIL);
+            return response;
+        }
+    }
+
+    @Transactional
+    @PostMapping("/modify")
+    @ResponseBody
+    public ModifyProjectResponse modify(@RequestBody ModifyProjectRequest request) {
+        ModifyProjectResponse response = new ModifyProjectResponse();
+        try {
+            log.info("修改项目", request);
+            log.info(JSON.toJSONString(request));
+            Date date = new Date();
+            if(request.getId() < 0 ){
+                response.setResult(ErrorNum.INVALID_PARAM_PJO_ID);
+                return response;
+            }
+            Optional<Project> projectOptional = projectService.findById(request.getId());
+            if(!projectOptional.isPresent()){
+                response.setResult(ErrorNum.INVALID_PARAM_PJO_ID);
+                return response;
+            }
+            Project project = projectOptional.get();
+            project.setCompanyName(request.getCompanyName());
+            project.setName(request.getName());
+            project.setEmail(request.getEmail());
+            project.setPhone(request.getPhone());
+            project.setUpdateTime(date.getTime());
+            project.setValid(request.isValid());
+            boolean success = projectService.save(project);
+            response.getData().setId(project.getId());
+            if(success){
+
+                response.setResult(ErrorNum.SUCCESS);
+                log.info("修改项目成功！");
+            }else{
+                response.setResult(ErrorNum.FAIL);
+                log.info("修改项目失败！");
+            }
+            return response;
+        } catch (Exception e) {
+            log.error("修改项目失败！");
+            log.error(e);
             response.setResult(ErrorNum.FAIL);
             return response;
         }

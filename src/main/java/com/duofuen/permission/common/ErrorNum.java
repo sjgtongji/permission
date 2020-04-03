@@ -2,7 +2,7 @@ package com.duofuen.permission.common;
 
 public enum ErrorNum {
     SUCCESS(200, "success"),
-    FAIL(201 , "fail"),
+    FAIL(201 , "查询失败"),
     EMPTY_APPID(202, "appId不能为空"),
     EMTPY_APPSECRET(203 , "appSecret不能为空"),
     INVALID_APPID_OR_APPSECRET(204 , "appId或者appSecret无效"),

@@ -13,14 +13,54 @@ public class QueryProjectResponse extends BaseResponse<QueryProjectResponse.Data
     }
     public class Data {
         @JsonInclude(JsonInclude.Include.NON_NULL)
-        private List<Project> list = new ArrayList<>();
+        private List<Project> data = new ArrayList<>();
 
-        public List<Project> getList() {
-            return list;
+        private int current = 1;
+
+        private int pageSize = 20;
+
+        private boolean success = false;
+
+        private int total = 1;
+
+        public List<Project> getData() {
+            return data;
         }
 
-        public void setList(List<Project> list) {
-            this.list = list;
+        public void setData(List<Project> data) {
+            this.data = data;
+        }
+
+        public int getCurrent() {
+            return current;
+        }
+
+        public void setCurrent(int current) {
+            this.current = current;
+        }
+
+        public int getPageSize() {
+            return pageSize;
+        }
+
+        public void setPageSize(int pageSize) {
+            this.pageSize = pageSize;
+        }
+
+        public boolean isSuccess() {
+            return success;
+        }
+
+        public void setSuccess(boolean success) {
+            this.success = success;
+        }
+
+        public int getTotal() {
+            return total;
+        }
+
+        public void setTotal(int total) {
+            this.total = total;
         }
     }
 }

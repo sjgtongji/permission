@@ -10,26 +10,16 @@ public class LoginResponse extends BaseResponse<LoginResponse.Data>{
 
     public class Data {
         @JsonInclude(JsonInclude.Include.NON_NULL)
-        private String deviceId;
-        @JsonInclude(JsonInclude.Include.NON_NULL)
-        private Integer deviceNo;
+        private Integer userId;
         @JsonInclude(JsonInclude.Include.NON_NULL)
         private String token;
 
-        public String getDeviceId() {
-            return deviceId;
+        public Integer getUserId() {
+            return userId;
         }
 
-        public void setDeviceId(String deviceId) {
-            this.deviceId = deviceId;
-        }
-
-        public Integer getDeviceNo() {
-            return deviceNo;
-        }
-
-        public void setDeviceNo(Integer deviceNo) {
-            this.deviceNo = deviceNo;
+        public void setUserId(Integer userId) {
+            this.userId = userId;
         }
 
         public String getToken() {
