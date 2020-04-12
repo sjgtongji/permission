@@ -13,7 +13,7 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Integer sort = Constant.SORT;
-    private Boolean isValid = true;
+    private boolean valid = true;
     private Integer version = Constant.VERSION;
     private long createTime;
     private long updateTime;
@@ -87,12 +87,12 @@ public class Project {
         this.sort = sort;
     }
 
-    public Boolean getValid() {
-        return isValid;
+    public boolean isValid() {
+        return valid;
     }
 
-    public void setValid(Boolean valid) {
-        isValid = valid;
+    public void setValid(boolean valid) {
+        this.valid = valid;
     }
 
     public Integer getId() {

@@ -11,6 +11,7 @@ public class QueryProjectRequest {
     private String phone = "";
     private String email = "";
     private String sorter = "";
+    private String valid = "";
 
     public String getCreateTime() {
         return createTime;
@@ -74,5 +75,13 @@ public class QueryProjectRequest {
 
     public void setSorter(String sorter) {
         this.sorter = sorter;
+    }
+
+    public String getValid() {
+        return valid;
+    }
+
+    public void setValid(String valid) {
+        this.valid = valid;
     }
 }

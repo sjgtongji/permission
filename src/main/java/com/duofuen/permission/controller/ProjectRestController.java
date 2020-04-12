@@ -77,6 +77,7 @@ public class ProjectRestController {
     public QueryProjectResponse query(QueryProjectRequest request) {
         try {
             log.info("查询项目", request);
+            log.info(JSON.toJSONString(request));
             QueryProjectResponse response = new QueryProjectResponse();
             List<Project> projects = new ArrayList<>();
             if(request.getCurrent() < 1 ){
@@ -105,6 +106,13 @@ public class ProjectRestController {
 
                     if(request.getEmail() != null && !request.getEmail().equals("")){
                         predicates.add(criteriaBuilder.like(root.get("email").as(String.class), "%" +request.getEmail()+ "%"));
+                    }
+                    if(request.getValid() != null && !request.getValid().equals("")){
+                        if(request.getValid().equals("true")){
+                            predicates.add(criteriaBuilder.isTrue(root.get("valid")));
+                        }else if(request.getValid().equals("false")){
+                            predicates.add(criteriaBuilder.isFalse(root.get("valid")));
+                        }
                     }
                     Predicate[] p = new Predicate[predicates.size()];
                     return criteriaBuilder.and(predicates.toArray(p));
@@ -169,6 +177,70 @@ public class ProjectRestController {
             return response;
         } catch (Exception e) {
             log.error("修改项目失败！");
+            log.error(e);
+            response.setResult(ErrorNum.FAIL);
+            return response;
+        }
+    }
+
+    @Transactional
+    @PostMapping("/batchValid")
+    @ResponseBody
+    public EmptyResponse batchValid(@RequestBody BatchValidProjectRequest request) {
+        EmptyResponse response = new EmptyResponse();
+        try {
+            log.info("批量启用项目", request);
+            log.info(JSON.toJSONString(request));
+            List<Project> projects = projectService.findAllByIds(request.getIds());
+            if(projects == null || projects.size() == 0){
+                response.setResult(ErrorNum.INVALID_PARAM_PJO_ID);
+                return response;
+            }
+            for(Project project : projects){
+                project.setValid(true);
+            }
+            List<Project> results = projectService.saveAll(projects);
+            if(results != null && results.size() == projects.size()){
+                response.setResult(ErrorNum.SUCCESS);
+            }else{
+                response.setResult(ErrorNum.FAIL);
+            }
+            log.info("批量启用成功！");
+            return response;
+        } catch (Exception e) {
+            log.error("批量启用失败！");
+            log.error(e);
+            response.setResult(ErrorNum.FAIL);
+            return response;
+        }
+    }
+
+    @Transactional
+    @PostMapping("/batchUnvalid")
+    @ResponseBody
+    public EmptyResponse batchUnvalid(@RequestBody BatchValidProjectRequest request) {
+        EmptyResponse response = new EmptyResponse();
+        try {
+            log.info("批量禁用项目", request);
+            log.info(JSON.toJSONString(request));
+            List<Project> projects = projectService.findAllByIds(request.getIds());
+            if(projects == null || projects.size() == 0){
+                response.setResult(ErrorNum.INVALID_PARAM_PJO_ID);
+                return response;
+            }
+            for(Project project : projects){
+                project.setValid(false);
+            }
+            List<Project> results = projectService.saveAll(projects);
+            if(results != null && results.size() == projects.size()){
+                response.setResult(ErrorNum.SUCCESS);
+            }else{
+                response.setResult(ErrorNum.FAIL);
+            }
+            log.info("批量启用成功！");
+            return response;
+        } catch (Exception e) {
+            log.error("批量禁用失败！");
             log.error(e);
             response.setResult(ErrorNum.FAIL);
             return response;

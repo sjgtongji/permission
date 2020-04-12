@@ -10,6 +10,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -48,5 +50,20 @@ public class ProjectService {
     public long count(Specification<Project> specification){
         return projectRepo.count(specification);
     }
+
+    public List<Project> findAllByIds(int[] ids){
+        List<Integer> integers = new ArrayList<>();
+        for(int id : ids){
+            integers.add(id);
+        }
+        return projectRepo.findAllById(integers);
+    }
+
+    public List<Project> saveAll(List<Project> projects){
+        return projectRepo.saveAll(projects);
+    }
+
+
+
 
 }

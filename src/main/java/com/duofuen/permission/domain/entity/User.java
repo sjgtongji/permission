@@ -15,7 +15,7 @@ public class User {
     private long createTime;
     private long updateTime;
     private Integer sort = Constant.SORT;
-    private Boolean isValid = true;
+    private boolean valid = true;
 
     @Column(nullable = false)
     private String userName;
@@ -118,12 +118,12 @@ public class User {
         this.email = email;
     }
 
-    public Boolean getValid() {
-        return isValid;
+    public boolean isValid() {
+        return valid;
     }
 
-    public void setValid(Boolean valid) {
-        isValid = valid;
+    public void setValid(boolean valid) {
+        this.valid = valid;
     }
 
     public Integer getRoleId() {
