@@ -140,6 +140,26 @@ public class ProjectRestController {
     }
 
     @Transactional
+    @GetMapping("/queryForSelect")
+    @ResponseBody
+    public QueryProjectForSelectResponse queryForSelect(QueryProjectForSelectRequest request) {
+        QueryProjectForSelectResponse response = new QueryProjectForSelectResponse();
+        try {
+            log.info("查询项目", request);
+            log.info(JSON.toJSONString(request));
+            List<Project> projects = projectService.findAllForSelect();
+            response.getData().setData(projects);
+            log.error("查询项目成功！");
+            return response;
+        } catch (Exception e) {
+            log.error("查询项目失败！");
+            log.error(e);
+            response.setResult(ErrorNum.FAIL);
+            return response;
+        }
+    }
+
+    @Transactional
     @PostMapping("/modify")
     @ResponseBody
     public ModifyProjectResponse modify(@RequestBody ModifyProjectRequest request) {

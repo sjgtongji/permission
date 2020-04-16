@@ -27,7 +27,7 @@ public class Menu {
     private String url = "";
 
     @OneToMany(mappedBy = "parentMenu", fetch = FetchType.EAGER)
-    private List<Menu> subMenus = new ArrayList<>();
+    private List<Menu> children = new ArrayList<>();
 
     @Column(name = "parent_id")
     private Integer parentId;
@@ -124,12 +124,12 @@ public class Menu {
         this.url = url;
     }
 
-    public List<Menu> getSubMenus() {
-        return subMenus;
+    public List<Menu> getChildren() {
+        return children;
     }
 
-    public void setSubMenus(List<Menu> subMenus) {
-        this.subMenus = subMenus;
+    public void setChildren(List<Menu> children) {
+        this.children = children;
     }
 
     public Menu getParentMenu() {

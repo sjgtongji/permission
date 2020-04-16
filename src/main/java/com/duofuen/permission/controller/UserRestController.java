@@ -1,5 +1,6 @@
 package com.duofuen.permission.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.duofuen.permission.common.ErrorNum;
 import com.duofuen.permission.controller.bean.*;
 import com.duofuen.permission.domain.entity.Project;
@@ -41,6 +42,7 @@ public class UserRestController {
     @ResponseBody
     public LoginResponse login(@RequestBody LoginRequest request) {
         try {
+            log.info(JSON.toJSONString(request));
             return userService.login(request);
         } catch (Exception e) {
             log.error("登陆失败！");

@@ -64,6 +64,10 @@ public class ProjectService {
     }
 
 
+    public List<Project> findAllForSelect(){
+        return projectRepo.findAll();
+    }
+
 
 
 }

@@ -1,5 +1,6 @@
 package com.duofuen.permission.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.duofuen.permission.common.ErrorNum;
 import com.duofuen.permission.controller.bean.*;
 import com.duofuen.permission.domain.entity.Menu;
@@ -42,6 +43,7 @@ public class MenuRestController {
     public CreateMenuResponse create(@RequestBody CreateMenuRequest request) {
         try {
             log.info("新增菜单", request);
+            log.info(JSON.toJSONString(request));
             CreateMenuResponse response = new CreateMenuResponse();
             if(request.getProjectId() == null){
                 response.setResult(ErrorNum.INVALID_PARAM_PJO_ID);
@@ -98,9 +100,24 @@ public class MenuRestController {
     public QueryMenuResponse query(QueryMenuRequest request) {
         try {
             log.info("查询菜单", request);
-            List<Menu> menus = menuService.findAllParent(PageRequest.of(request.getPage(), request.getSize(), Sort.Direction.DESC, "createTime"));
+//            List<Menu> menus = menuService.findAllParent(PageRequest.of(request.getPage(), request.getSize(), Sort.Direction.DESC, "createTime"));
+            List<Menu> menus = new ArrayList<>();
+            Menu parent = new Menu();
+            parent.setId(1);
+            parent.setCreateTime(new Date().getTime());
+            parent.setName("父菜单");
+            parent.setUrl("1111");
+            Menu child = new Menu();
+            child.setId(2);
+            child.setCreateTime(new Date().getTime());
+            child.setName("子菜单");
+            child.setUrl("1111");
+            List<Menu> children = new ArrayList<>();
+            children.add(child);
+            parent.setChildren(children);
+            menus.add(parent);
             QueryMenuResponse response = new QueryMenuResponse();
-            response.getData().setList(menus);
+            response.getData().setData(menus);
             log.error("查询菜单成功！");
             return response;
         } catch (Exception e) {

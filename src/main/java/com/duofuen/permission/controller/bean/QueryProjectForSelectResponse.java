@@ -1,26 +1,26 @@
 package com.duofuen.permission.controller.bean;
 
-import com.duofuen.permission.domain.entity.Menu;
 import com.duofuen.permission.domain.entity.Project;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class QueryMenuResponse extends BaseResponse<QueryMenuResponse.Data> {
-    public QueryMenuResponse() {
+public class QueryProjectForSelectResponse extends BaseResponse<QueryProjectForSelectResponse.Data>{
+    public QueryProjectForSelectResponse() {
         super();
-        this.data = new Data();
+        this.data = new QueryProjectForSelectResponse.Data();
     }
+
     public class Data {
         @JsonInclude(JsonInclude.Include.NON_NULL)
-        private List<Menu> data = new ArrayList<>();
+        private List<Project> data = new ArrayList<>();
 
-        public List<Menu> getData() {
+        public List<Project> getData() {
             return data;
         }
 
-        public void setData(List<Menu> data) {
+        public void setData(List<Project> data) {
             this.data = data;
         }
     }
