@@ -114,6 +114,7 @@ public class ProjectRestController {
                             predicates.add(criteriaBuilder.isFalse(root.get("valid")));
                         }
                     }
+                    predicates.add(criteriaBuilder.isFalse(root.get("deleted")));
                     Predicate[] p = new Predicate[predicates.size()];
                     return criteriaBuilder.and(predicates.toArray(p));
                 }
@@ -172,7 +173,7 @@ public class ProjectRestController {
                 response.setResult(ErrorNum.INVALID_PARAM_PJO_ID);
                 return response;
             }
-            Optional<Project> projectOptional = projectService.findById(request.getId());
+            Optional<Project> projectOptional = projectService.findByIdAndDeleted(request.getId() , false);
             if(!projectOptional.isPresent()){
                 response.setResult(ErrorNum.INVALID_PARAM_PJO_ID);
                 return response;
@@ -211,7 +212,7 @@ public class ProjectRestController {
         try {
             log.info("批量启用项目", request);
             log.info(JSON.toJSONString(request));
-            List<Project> projects = projectService.findAllByIds(request.getIds());
+            List<Project> projects = projectService.findAllByIdAndDeleted(request.getIds() , false);
             if(projects == null || projects.size() == 0){
                 response.setResult(ErrorNum.INVALID_PARAM_PJO_ID);
                 return response;
@@ -243,7 +244,7 @@ public class ProjectRestController {
         try {
             log.info("批量禁用项目", request);
             log.info(JSON.toJSONString(request));
-            List<Project> projects = projectService.findAllByIds(request.getIds());
+            List<Project> projects = projectService.findAllByIdAndDeleted(request.getIds(), false);
             if(projects == null || projects.size() == 0){
                 response.setResult(ErrorNum.INVALID_PARAM_PJO_ID);
                 return response;
@@ -261,6 +262,72 @@ public class ProjectRestController {
             return response;
         } catch (Exception e) {
             log.error("批量禁用失败！");
+            log.error(e);
+            response.setResult(ErrorNum.FAIL);
+            return response;
+        }
+    }
+
+    @Transactional
+    @PostMapping("/delete")
+    @ResponseBody
+    public EmptyResponse delete(@RequestBody DeleteProjectRequest request) {
+        EmptyResponse response = new EmptyResponse();
+        try {
+            log.info("删除项目", request);
+            log.info(JSON.toJSONString(request));
+            if(request.getId() < 0){
+                response.setResult(ErrorNum.INVALID_PARAM_PJO_ID);
+                return response;
+            }
+            Optional<Project> projectOptional = projectService.findByIdAndDeleted(request.getId() , false);
+            if(!projectOptional.isPresent()){
+                response.setResult(ErrorNum.INVALID_PARAM_PJO_ID);
+                return response;
+            }
+            Project project = projectOptional.get();
+            project.setDeleted(true);
+            response.setResult(projectService.save(project) ? ErrorNum.SUCCESS : ErrorNum.FAIL);
+            log.info("删除项目成功！");
+            return response;
+        } catch (Exception e) {
+            log.error("删除项目失败！");
+            log.error(e);
+            response.setResult(ErrorNum.FAIL);
+            return response;
+        }
+    }
+
+    @Transactional
+    @PostMapping("/batchDelete")
+    @ResponseBody
+    public EmptyResponse batchDelete(@RequestBody BatchDeleteProjectRequest request) {
+        EmptyResponse response = new EmptyResponse();
+        try {
+            log.info("批量删除项目", request);
+            log.info(JSON.toJSONString(request));
+            if(request.getIds() == null || request.getIds().length == 0){
+                response.setResult(ErrorNum.INVALID_PARAM_PJO_ID);
+                return response;
+            }
+            List<Project> projects = projectService.findAllByIdAndDeleted(request.getIds() , false);
+            if(projects == null || projects.size() == 0){
+                response.setResult(ErrorNum.INVALID_PARAM_PJO_ID);
+                return response;
+            }
+            for(Project project : projects){
+                project.setDeleted(true);
+            }
+            List<Project> results = projectService.saveAll(projects);
+            if(results != null && results.size() == projects.size()){
+                response.setResult(ErrorNum.SUCCESS);
+            }else{
+                response.setResult(ErrorNum.FAIL);
+            }
+            log.info("批量删除项目成功！");
+            return response;
+        } catch (Exception e) {
+            log.error("批量删除项目失败！");
             log.error(e);
             response.setResult(ErrorNum.FAIL);
             return response;

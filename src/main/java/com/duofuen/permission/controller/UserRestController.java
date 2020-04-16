@@ -77,7 +77,7 @@ public class UserRestController {
                 response.setResult(ErrorNum.INVALID_PARAM_PWD);
                 return response;
             }
-            Optional<Project> optionalProject = projectService.findById(request.getProjectId());
+            Optional<Project> optionalProject = projectService.findByIdAndDeleted(request.getProjectId() , false);
             if(!optionalProject.isPresent()){
                 response.setResult(ErrorNum.INVALID_PARAM_PJO_ID);
                 return response;

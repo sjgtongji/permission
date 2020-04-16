@@ -10,6 +10,10 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -23,8 +27,8 @@ public class ProjectService {
         this.projectRepo = projectRepo;
     }
 
-    public Optional<Project> queryByAppIdAndSecret(String appId , String appSecret){
-        return projectRepo.findByAppIdAndAppSecret(appId , appSecret);
+    public Optional<Project> queryByAppIdAndSecretAndDelete(String appId , String appSecret){
+        return projectRepo.findByAppIdAndAppSecretAndDeleted(appId , appSecret , false);
     }
 
     public boolean save(Project project){
@@ -36,11 +40,11 @@ public class ProjectService {
     }
 
     public Page<Project> findAll(Pageable pageable){
-        return projectRepo.findAll(pageable);
+        return projectRepo.findAllByDeleted(pageable , false);
     }
 
-    public Optional<Project> findById(Integer id){
-        return projectRepo.findById(id);
+    public Optional<Project> findByIdAndDeleted(Integer id, boolean deleted){
+        return projectRepo.findByIdAndDeleted(id , deleted);
     }
 
     public Page<Project> findAll(Specification<Project> specification , Pageable pageable){
@@ -51,12 +55,12 @@ public class ProjectService {
         return projectRepo.count(specification);
     }
 
-    public List<Project> findAllByIds(int[] ids){
+    public List<Project> findAllByIdAndDeleted(int[] ids , boolean deleted){
         List<Integer> integers = new ArrayList<>();
         for(int id : ids){
             integers.add(id);
         }
-        return projectRepo.findAllById(integers);
+        return projectRepo.findAllByDeletedAndIdIn(deleted , integers);
     }
 
     public List<Project> saveAll(List<Project> projects){
@@ -65,7 +69,7 @@ public class ProjectService {
 
 
     public List<Project> findAllForSelect(){
-        return projectRepo.findAll();
+        return projectRepo.findAllByDeleted(false);
     }
 
 

@@ -1,19 +1,19 @@
 package com.duofuen.permission.controller.bean;
 
-public class CreateMenuRequest {
-    private String token;
-    private Integer projectId;
-    private String name;
+public class ModifyMenuRequest {
+    private Integer id;
+    private String name = "";
     private String url = "";
     private String component = "";
+    private Integer projectId;
     private Integer parentId;
 
-    public Integer getProjectId() {
-        return projectId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setProjectId(Integer projectId) {
-        this.projectId = projectId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -32,19 +32,27 @@ public class CreateMenuRequest {
         this.url = url;
     }
 
-    public Integer getParentId() {
-        return parentId;
-    }
-
-    public void setParentId(Integer parentId) {
-        this.parentId = parentId;
-    }
-
     public String getComponent() {
         return component;
     }
 
     public void setComponent(String component) {
         this.component = component;
+    }
+
+    public Integer getProjectId() {
+        return projectId;
+    }
+
+    public void setProjectId(Integer projectId) {
+        this.projectId = projectId;
+    }
+
+    public Integer getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(Integer parentId) {
+        this.parentId = parentId;
     }
 }

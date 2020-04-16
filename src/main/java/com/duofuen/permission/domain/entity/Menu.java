@@ -16,6 +16,7 @@ public class Menu {
     private Integer id;
     private Integer sort = Constant.SORT;
     private boolean valid = true;
+    private boolean deleted = false;
     private Integer version = Constant.VERSION;
     private long createTime;
     private long updateTime;
@@ -25,6 +26,9 @@ public class Menu {
 
     @Column(nullable = false)
     private String url = "";
+
+    @Column(nullable = false)
+    private String component = "";
 
     @OneToMany(mappedBy = "parentMenu", fetch = FetchType.EAGER)
     private List<Menu> children = new ArrayList<>();
@@ -43,6 +47,24 @@ public class Menu {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "project_id", insertable = false, updatable = false)
     private Project project;
+
+    private String projectName;
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
+
+    public String getComponent() {
+        return component;
+    }
+
+    public void setComponent(String component) {
+        this.component = component;
+    }
 
     public Integer getId() {
         return id;
@@ -147,5 +169,13 @@ public class Menu {
 
     public void setParentId(Integer parentId) {
         this.parentId = parentId;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 }

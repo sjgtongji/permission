@@ -31,6 +31,16 @@ public class Project {
     @Column(nullable = false)
     private String appSecret;
 
+    private boolean deleted = false;
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
+
     public String getName() {
         return name;
     }

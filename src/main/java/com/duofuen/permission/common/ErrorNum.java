@@ -15,6 +15,8 @@ public enum ErrorNum {
     INVALID_PARAM_URL(211 , "url参数无效"),
     INVALID_PARAM_PARENT_ID(212 , "parentId参数无效"),
     INVALID_PARAM_USER_ID(213 , "userId参数无效"),
+    INVALID_PARAM_COMP(214 , "component参数无效"),
+    INVALID_PARAM_MENU_ID(215 , "menuId参数无效"),
     UNKNOWN(500, "未知错误");
     private int code;
     private String msg;

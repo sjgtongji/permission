@@ -58,7 +58,7 @@ public class RoleRestController {
                 response.setResult(ErrorNum.INVALID_PARAM_NAME);
                 return response;
             }
-            Optional<Project> optionalProject = projectService.queryByAppIdAndSecret(request.getAppId() , request.getAppSecret());
+            Optional<Project> optionalProject = projectService.queryByAppIdAndSecretAndDelete(request.getAppId() , request.getAppSecret());
             if(!optionalProject.isPresent()){
                 log.error("创建角色失败！");
                 response.setResult(ErrorNum.INVALID_APPID_OR_APPSECRET);

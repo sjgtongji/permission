@@ -18,7 +18,7 @@ public class Role {
     private Integer version = Constant.VERSION;
     private long createTime;
     private long updateTime;
-
+    private boolean deleted = false;
     @Column(nullable = false)
     private String name;
 
@@ -34,6 +34,14 @@ public class Role {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "project_id", insertable = false, updatable = false)
     private Project project;
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
 
     public Integer getId() {
         return id;
