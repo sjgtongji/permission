@@ -21,6 +21,8 @@ public class Role {
     private boolean deleted = false;
     @Column(nullable = false)
     private String name;
+    @Column(nullable = false)
+    private String code;
 
     @ManyToMany
     @JoinTable(name = "dfe_role_menu",
@@ -34,7 +36,7 @@ public class Role {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "project_id", insertable = false, updatable = false)
     private Project project;
-
+    private String projectName;
     public boolean isDeleted() {
         return deleted;
     }
@@ -121,5 +123,21 @@ public class Role {
 
     public void setSort(Integer sort) {
         this.sort = sort;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
     }
 }

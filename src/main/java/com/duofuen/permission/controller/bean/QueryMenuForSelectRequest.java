@@ -1,5 +1,4 @@
 package com.duofuen.permission.controller.bean;
 
-public class QueryProjectForSelectRequest {
-
+public class QueryMenuForSelectRequest {
 }

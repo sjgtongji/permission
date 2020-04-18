@@ -1,5 +1,6 @@
 package com.duofuen.permission.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.duofuen.permission.common.ErrorNum;
 import com.duofuen.permission.controller.bean.*;
 import com.duofuen.permission.domain.entity.Project;
@@ -12,10 +13,16 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -94,22 +101,64 @@ public class RoleRestController {
     @GetMapping("/query")
     @ResponseBody
     public QueryRoleResponse query(QueryRoleRequest request) {
+        QueryRoleResponse response = new QueryRoleResponse();
         try {
             log.info("查询角色", request);
-            Page<Role> page = roleService.findAll(PageRequest.of(request.getPage(), request.getSize(), Sort.Direction.DESC, "createTime"));
-            QueryRoleResponse response = new QueryRoleResponse();
+            log.info(JSON.toJSONString(request));
+
             List<Role> roles = new ArrayList<>();
+            if(request.getCurrent() < 1 ){
+                request.setCurrent(1);
+            }
+            if(request.getPageSize() < 0){
+                request.setPageSize(20);
+            }
+            Page<Role> page = null;
+            Pageable pageable = PageRequest.of(request.getCurrent()-1, request.getPageSize(), Sort.Direction.DESC, "createTime");
+            Specification<Role> specification = new Specification<Role>() {
+                @Override
+                public Predicate toPredicate(Root<Role> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                    List<Predicate> predicates = new ArrayList<>();
+                    if(request.getName() != null && !request.getName().equals("")){
+                        predicates.add(criteriaBuilder.like(root.get("name").as(String.class), "%" + request.getName() + "%"));
+                    }
+
+                    if(request.getCode() != null && !request.getCode().equals("")){
+                        predicates.add(criteriaBuilder.like(root.get("code").as(String.class), "%" +request.getCode()+ "%"));
+                    }
+
+                    if(request.getProjectName() != null && !request.getProjectName().equals("")){
+                        predicates.add(criteriaBuilder.like(root.get("projectName").as(String.class), "%" +request.getProjectName()+ "%"));
+                    }
+
+                    if(request.getValid() != null && !request.getValid().equals("")){
+                        if(request.getValid().equals("true")){
+                            predicates.add(criteriaBuilder.isTrue(root.get("valid")));
+                        }else if(request.getValid().equals("false")){
+                            predicates.add(criteriaBuilder.isFalse(root.get("valid")));
+                        }
+                    }
+                    predicates.add(criteriaBuilder.isFalse(root.get("deleted")));
+                    Predicate[] p = new Predicate[predicates.size()];
+                    return criteriaBuilder.and(predicates.toArray(p));
+                }
+            };
+            page = roleService.findAll(specification , pageable);
+
             for(Role item : page){
                 roles.add(item);
             }
-            response.getData().setList(roles);
+            response.getData().setData(roles);
+            response.getData().setCurrent(request.getCurrent());
+            response.getData().setPageSize(request.getPageSize());
+            response.getData().setTotal((int) roleService.count(specification));
+            response.getData().setSuccess(true);
             log.error("查询角色成功！");
             return response;
         } catch (Exception e) {
             log.error("查询角色失败！");
             log.error(e);
-            QueryRoleResponse response = new QueryRoleResponse();
-            response.setResult(ErrorNum.UNKNOWN);
+            response.setResult(ErrorNum.FAIL);
             return response;
         }
     }

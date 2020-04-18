@@ -52,4 +52,25 @@ public class MenuService {
         return list;
     }
 
+    public List<Menu> findAllParentAndDeleted(boolean deleted){
+        return menuRepo.findAllByParentIdAndDeleted(null , deleted);
+    }
+
+    public void findAllChildren(Menu parent , List<Menu> children){
+        if(parent.isDeleted()){
+            return;
+        }
+        if(parent.getChildren() == null || parent.getChildren().size() == 0){
+            return;
+        }
+        for(Menu menu : parent.getChildren()){
+            children.add(menu);
+            findAllChildren(menu , children);
+        }
+    }
+
+    public List<Menu> saveAll(List<Menu> menus){
+        return menuRepo.saveAll(menus);
+    }
+
 }

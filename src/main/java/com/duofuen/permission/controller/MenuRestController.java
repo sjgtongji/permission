@@ -225,6 +225,7 @@ public class MenuRestController {
             menu.setName(request.getName());
             menu.setUrl(request.getUrl());
             menu.setParentId(request.getParentId());
+            menu.setValid(request.isValid());
 
             Menu result = menuService.save(menu);
             if(result != null){
@@ -242,5 +243,69 @@ public class MenuRestController {
             return response;
         }
     }
+
+    @Transactional
+    @PostMapping("/delete")
+    @ResponseBody
+    public EmptyResponse delete(@RequestBody DeleteMenuRequest request) {
+        EmptyResponse response = new EmptyResponse();
+        try {
+            log.info("删除菜单", request);
+            log.info(JSON.toJSONString(request));
+            if(request.getId() < 0){
+                response.setResult(ErrorNum.INVALID_PARAM_MENU_ID);
+                return response;
+            }
+
+            Optional<Menu> menuOptional = menuService.findByIdAndDeleted(request.getId() , false);
+            if(!menuOptional.isPresent()){
+                response.setResult(ErrorNum.INVALID_PARAM_MENU_ID);
+                return response;
+            }
+            List<Menu> children = new ArrayList<>();
+            menuService.findAllChildren(menuOptional.get() , children);
+
+            menuOptional.get().setDeleted(true);
+            for(Menu child : children){
+                child.setDeleted(true);
+            }
+            children.add(menuOptional.get());
+            List<Menu> result = menuService.saveAll(children);
+            if(result != null && result.size() == children.size()){
+                response.getData().setSuccess(true);
+                log.info("删除菜单成功！");
+            }else{
+                response.setResult(ErrorNum.UNKNOWN);
+                log.info("删除菜单失败！");
+            }
+            return response;
+        } catch (Exception e) {
+            log.error("删除菜单失败！");
+            log.error(e);
+            response.setResult(ErrorNum.FAIL);
+            return response;
+        }
+    }
+
+    @Transactional
+    @GetMapping("/queryForSelect")
+    @ResponseBody
+    public QueryMenuForSelectResponse queryForSelect(QueryMenuForSelectRequest request) {
+        QueryMenuForSelectResponse response = new QueryMenuForSelectResponse();
+        try {
+            log.info("请求菜单数据", request);
+            log.info(JSON.toJSONString(request));
+
+            List<Menu> menus = menuService.findAllParentAndDeleted(false);
+            response.constructResponse(menus);
+            return response;
+        } catch (Exception e) {
+            log.error("请求菜单数据失败！");
+            log.error(e);
+            response.setResult(ErrorNum.FAIL);
+            return response;
+        }
+    }
+
 
 }
