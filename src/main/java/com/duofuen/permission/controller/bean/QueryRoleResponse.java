@@ -63,5 +63,7 @@ public class QueryRoleResponse extends BaseResponse<QueryRoleResponse.Data>{
         public void setTotal(int total) {
             this.total = total;
         }
+
+
     }
 }

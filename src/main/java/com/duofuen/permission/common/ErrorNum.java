@@ -17,6 +17,9 @@ public enum ErrorNum {
     INVALID_PARAM_USER_ID(213 , "userId参数无效"),
     INVALID_PARAM_COMP(214 , "component参数无效"),
     INVALID_PARAM_MENU_ID(215 , "menuId参数无效"),
+    INVALID_PARAM_ROLE_CODE_EXIST(216 , "code参数已存在"),
+    INVALID_PARAM_ROLE_CODE_EMPTY(217 , "code参数无效"),
+    INVALID_PARAM_PJO_ID_OR_MENU_ID(218, "menuId或者projectId参数无效"),
     UNKNOWN(500, "未知错误");
     private int code;
     private String msg;

@@ -82,7 +82,7 @@ public class UserRestController {
                 response.setResult(ErrorNum.INVALID_PARAM_PJO_ID);
                 return response;
             }
-            Optional<Role> optionalRole = roleService.findById(request.getRoleId());
+            Optional<Role> optionalRole = roleService.findByIdAndDeleted(request.getRoleId() , false);
             if(!optionalRole.isPresent()){
                 response.setResult(ErrorNum.INVALID_PARAM_ROLE_ID);
                 return response;
@@ -143,7 +143,7 @@ public class UserRestController {
             return response;
         }
 
-        Optional<Role> roleOptional = roleService.findById(request.getRoleId());
+        Optional<Role> roleOptional = roleService.findByIdAndDeleted(request.getRoleId() , false);
         if(!roleOptional.isPresent()){
             response.setResult(ErrorNum.INVALID_PARAM_ROLE_ID);
             log.info("设置用户角色失败，roleId参数错误");

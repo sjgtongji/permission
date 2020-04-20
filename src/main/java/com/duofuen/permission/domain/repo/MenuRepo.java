@@ -19,4 +19,6 @@ public interface MenuRepo extends JpaRepository<Menu , Integer>, JpaSpecificatio
     Page<Menu> findAll(Specification<Menu> specification , Pageable pageable);
     Optional<Menu> findByIdAndDeleted(Integer id, boolean deleted);
     List<Menu> findAllByParentIdAndDeleted(Integer parentId , boolean deleted);
+    List<Menu> findAllByParentIdAndProjectIdAndDeleted(Integer parentId ,Integer projectId, boolean deleted);
+    List<Menu> findAllByIdInAndProjectIdAndDeleted(List<Integer> ids , Integer projectId , boolean deleted);
 }

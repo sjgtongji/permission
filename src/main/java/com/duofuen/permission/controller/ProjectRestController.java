@@ -42,6 +42,7 @@ public class ProjectRestController {
     public CreateProjectResponse create(@RequestBody CreateProjectRequest request) {
         try {
             log.info("新建项目", request);
+            log.info(JSON.toJSONString(request));
             Date date = new Date();
             Project project = new Project();
             project.setCompanyName(request.getCompanyName());

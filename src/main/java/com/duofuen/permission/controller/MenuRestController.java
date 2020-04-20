@@ -295,9 +295,22 @@ public class MenuRestController {
         try {
             log.info("请求菜单数据", request);
             log.info(JSON.toJSONString(request));
+            if(request.getProjectId() <= 0){
+                response.setResult(ErrorNum.INVALID_PARAM_PJO_ID);
+                return response;
+            }
 
-            List<Menu> menus = menuService.findAllParentAndDeleted(false);
-            response.constructResponse(menus);
+
+            List<Menu> menus = menuService.findAllParentAndProjectIdAndDeleted(request.getProjectId() , false);
+            response.constructResponseMenu(menus);
+
+            if(request.getRoleId() > 0){
+                Optional<Role> roleOptional = roleService.findByIdAndDeleted(request.getRoleId() , false);
+                if(roleOptional.isPresent()){
+                    Role role = roleOptional.get();
+                    response.constructResponseCheckKeys(role.getMenus());
+                }
+            }
             return response;
         } catch (Exception e) {
             log.error("请求菜单数据失败！");

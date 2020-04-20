@@ -11,9 +11,12 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface RoleRepo extends JpaRepository<Role , Integer>, JpaSpecificationExecutor<Role> {
     Page<Role> findAll(Specification<Role> specification , Pageable pageable);
     Optional<Role> findByIdAndDeleted(Integer id, boolean deleted);
+    List<Role> findAllByCodeAndDeleted(String code , boolean deleted);
+    List<Role> findAllByIdInAndDeleted(List<Integer> ids , boolean deleted);
 }

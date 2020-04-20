@@ -73,4 +73,12 @@ public class MenuService {
         return menuRepo.saveAll(menus);
     }
 
+    public List<Menu> findAllParentAndProjectIdAndDeleted(Integer projectId , boolean deleted){
+        return menuRepo.findAllByParentIdAndProjectIdAndDeleted(null , projectId , deleted);
+    }
+
+    public List<Menu> findAllByIdInAndProjectIdAndDeleted(List<Integer> ids , Integer projectId , boolean deleted){
+        return menuRepo.findAllByIdInAndProjectIdAndDeleted(ids , projectId , deleted);
+    }
+
 }

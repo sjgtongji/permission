@@ -2,6 +2,7 @@ package com.duofuen.permission.domain.entity;
 
 import com.duofuen.permission.common.Constant;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -29,13 +30,14 @@ public class Menu {
 
     @Column(nullable = false)
     private String component = "";
-
+    @JsonIgnoreProperties(value = { "hibernateLazyInitializer"})
     @OneToMany(mappedBy = "parentMenu", fetch = FetchType.EAGER)
     private List<Menu> children = new ArrayList<>();
 
+    @JsonIgnoreProperties(value = { "hibernateLazyInitializer"})
     @Column(name = "parent_id")
     private Integer parentId;
-
+    @JsonIgnoreProperties(value = { "hibernateLazyInitializer"})
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_id", insertable = false, updatable = false)
     @JsonIgnore
@@ -178,4 +180,6 @@ public class Menu {
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;
     }
+
+
 }

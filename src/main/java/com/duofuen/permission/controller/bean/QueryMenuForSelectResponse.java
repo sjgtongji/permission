@@ -66,7 +66,7 @@ public class QueryMenuForSelectResponse extends BaseResponse<QueryMenuForSelectR
         }
     }
 
-    public void constructResponse(List<Menu> menus){
+    public void constructResponseMenu(List<Menu> menus){
         List<MenuData> data = new ArrayList<>();
         for(Menu menu : menus){
             data.add(constructMenuData(menu));
@@ -86,5 +86,13 @@ public class QueryMenuForSelectResponse extends BaseResponse<QueryMenuForSelectR
             data.setChildren(children);
         }
         return data;
+    }
+
+    public void constructResponseCheckKeys(List<Menu> menus){
+        List<String> checkedKeys = new ArrayList<>();
+        for(Menu m : menus){
+            checkedKeys.add(m.getId().toString());
+        }
+        getData().setCheckedKeys(checkedKeys);
     }
 }
