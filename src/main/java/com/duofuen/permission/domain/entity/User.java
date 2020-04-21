@@ -1,6 +1,7 @@
 package com.duofuen.permission.domain.entity;
 
 import com.duofuen.permission.common.Constant;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -19,6 +20,7 @@ public class User {
 
     @Column(nullable = false)
     private String userName;
+    @JsonIgnore
     @Column(nullable = false)
     private String password;
     private String phone;
@@ -37,7 +39,18 @@ public class User {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "project_id", insertable = false, updatable = false)
     private Project project;
+
+    private String projectName;
+
     private boolean deleted = false;
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
 
     public boolean isDeleted() {
         return deleted;

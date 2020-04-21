@@ -12,11 +12,22 @@ import com.duofuen.permission.service.UserService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -164,5 +175,74 @@ public class UserRestController {
         log.info("设置用户角色完成");
         return response;
 
+    }
+
+    @Transactional
+    @GetMapping("/query")
+    @ResponseBody
+    public QueryUserResponse query(QueryUserRequest request) {
+        QueryUserResponse response = new QueryUserResponse();
+        try {
+            log.info("查询用户", request);
+            log.info(JSON.toJSONString(request));
+
+            List<User> users = new ArrayList<>();
+            if(request.getCurrent() < 1 ){
+                request.setCurrent(1);
+            }
+            if(request.getPageSize() < 0){
+                request.setPageSize(20);
+            }
+            Page<User> page = null;
+            Pageable pageable = PageRequest.of(request.getCurrent()-1, request.getPageSize(), Sort.Direction.DESC, "createTime");
+            Specification<User> specification = new Specification<User>() {
+                @Override
+                public Predicate toPredicate(Root<User> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                    List<Predicate> predicates = new ArrayList<>();
+                    if(request.getUserName() != null && !request.getUserName().equals("")){
+                        predicates.add(criteriaBuilder.like(root.get("userName").as(String.class), "%" + request.getUserName() + "%"));
+                    }
+
+                    if(request.getProjectName() != null && !request.getProjectName().equals("")){
+                        predicates.add(criteriaBuilder.like(root.get("projectName").as(String.class), "%" +request.getProjectName()+ "%"));
+                    }
+
+                    if(request.getPhone() != null && !request.getPhone().equals("")){
+                        predicates.add(criteriaBuilder.like(root.get("phone").as(String.class), "%" +request.getPhone()+ "%"));
+                    }
+
+                    if(request.getEmail() != null && !request.getEmail().equals("")){
+                        predicates.add(criteriaBuilder.like(root.get("email").as(String.class), "%" +request.getEmail()+ "%"));
+                    }
+                    if(request.getValid() != null && !request.getValid().equals("")){
+                        if(request.getValid().equals("true")){
+                            predicates.add(criteriaBuilder.isTrue(root.get("valid")));
+                        }else if(request.getValid().equals("false")){
+                            predicates.add(criteriaBuilder.isFalse(root.get("valid")));
+                        }
+                    }
+                    predicates.add(criteriaBuilder.isFalse(root.get("deleted")));
+                    Predicate[] p = new Predicate[predicates.size()];
+                    return criteriaBuilder.and(predicates.toArray(p));
+                }
+            };
+            page = userService.findAll(specification , pageable);
+
+            for(User item : page){
+                users.add(item);
+            }
+            response.getData().setData(users);
+            response.getData().setCurrent(request.getCurrent());
+            response.getData().setPageSize(request.getPageSize());
+            response.getData().setTotal((int) userService.count(specification));
+            response.getData().setSuccess(true);
+            log.error("查询用户成功！");
+            return response;
+        } catch (Exception e) {
+            log.error("查询用户失败！");
+            log.error(e);
+            response.setResult(ErrorNum.FAIL);
+            return response;
+        }
     }
 }

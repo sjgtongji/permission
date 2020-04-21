@@ -452,5 +452,36 @@ public class RoleRestController {
         }
     }
 
+    @Transactional
+    @GetMapping("/queryForSelect")
+    @ResponseBody
+    public QueryRoleForSelectResponse queryForSelect(QueryRoleForSelectRequest request) {
+        QueryRoleForSelectResponse response = new QueryRoleForSelectResponse();
+        try {
+            log.info("查询角色", request);
+            log.info(JSON.toJSONString(request));
+            if(request.getProjectId() <= 0){
+                log.error("查询角色失败！");
+                response.setResult(ErrorNum.INVALID_PARAM_PJO_ID);
+                return response;
+            }
+            Optional<Project> optionalProject = projectService.findByIdAndDeleted(request.getProjectId() , false);
+            if(!optionalProject.isPresent()){
+                log.error("修改角色失败！");
+                response.setResult(ErrorNum.INVALID_PARAM_PJO_ID);
+                return response;
+            }
+            List<Role> roles = roleService.findAllForSelect(request.getProjectId());
+            response.getData().setData(roles);
+            log.error("查询项目成功！");
+            return response;
+        } catch (Exception e) {
+            log.error("查询项目失败！");
+            log.error(e);
+            response.setResult(ErrorNum.FAIL);
+            return response;
+        }
+    }
+
 
 }

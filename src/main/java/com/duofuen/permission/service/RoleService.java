@@ -55,4 +55,8 @@ public class RoleService {
     public List<Role> saveAll(List<Role> roles){
         return roleRepo.saveAll(roles);
     }
+
+    public List<Role> findAllForSelect(int projectId){
+        return roleRepo.findAllByProjectIdAndDeleted(projectId,false);
+    }
 }

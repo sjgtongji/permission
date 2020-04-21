@@ -3,6 +3,7 @@ package com.duofuen.permission.service;
 import com.duofuen.permission.common.ErrorNum;
 import com.duofuen.permission.controller.bean.LoginRequest;
 import com.duofuen.permission.controller.bean.LoginResponse;
+import com.duofuen.permission.domain.entity.Project;
 import com.duofuen.permission.domain.entity.RestToken;
 import com.duofuen.permission.domain.entity.User;
 import com.duofuen.permission.domain.repo.ProjectRepo;
@@ -10,6 +11,9 @@ import com.duofuen.permission.domain.repo.RestTokenRepo;
 import com.duofuen.permission.domain.repo.UserRepo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Base64Utils;
@@ -89,4 +93,11 @@ public class UserService{
         return restToken.getToken();
     }
 
+    public Page<User> findAll(Specification<User> specification, Pageable pageable) {
+        return userRepo.findAll(specification , pageable);
+    }
+
+    public long count(Specification<User> specification){
+        return userRepo.count(specification);
+    }
 }

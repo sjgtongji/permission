@@ -19,4 +19,5 @@ public interface RoleRepo extends JpaRepository<Role , Integer>, JpaSpecificatio
     Optional<Role> findByIdAndDeleted(Integer id, boolean deleted);
     List<Role> findAllByCodeAndDeleted(String code , boolean deleted);
     List<Role> findAllByIdInAndDeleted(List<Integer> ids , boolean deleted);
+    List<Role> findAllByProjectIdAndDeleted(int projectId , boolean deleted);
 }
