@@ -7,8 +7,11 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface UserRepo extends JpaRepository<User , Integer>, JpaSpecificationExecutor<User> {
     Optional<User> findByUserNameAndPassword(String username , String password);
+    Optional<User> findByIdAndDeleted(Integer id , boolean deleted);
+    List<User> findAllByIdInAndDeleted(List<Integer> ids , boolean deleted);
 }

@@ -20,6 +20,7 @@ import org.springframework.util.Base64Utils;
 
 import java.time.Instant;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -99,5 +100,17 @@ public class UserService{
 
     public long count(Specification<User> specification){
         return userRepo.count(specification);
+    }
+
+    public Optional<User> findByIdAndDeleted(Integer id , boolean deleted){
+        return userRepo.findByIdAndDeleted(id , deleted);
+    }
+
+    public List<User> findAllByIdInAndDeleted(List<Integer> ids , boolean deleted){
+        return userRepo.findAllByIdInAndDeleted(ids , deleted);
+    }
+
+    public List<User> saveAll(List<User> users){
+        return userRepo.saveAll(users);
     }
 }

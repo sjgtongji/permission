@@ -3,6 +3,7 @@ package com.duofuen.permission.controller;
 import com.alibaba.fastjson.JSON;
 import com.duofuen.permission.common.ErrorNum;
 import com.duofuen.permission.controller.bean.*;
+import com.duofuen.permission.domain.entity.Menu;
 import com.duofuen.permission.domain.entity.Project;
 import com.duofuen.permission.domain.entity.Role;
 import com.duofuen.permission.domain.entity.User;
@@ -35,7 +36,7 @@ import java.util.Optional;
 @CrossOrigin
 public class UserRestController {
     private static Logger log = LogManager.getLogger();
-
+    private static String DEFAULT_PWD = "111111";
     private final UserService userService;
     private final ProjectService projectService;
     private final RoleService roleService;
@@ -69,9 +70,10 @@ public class UserRestController {
     @PostMapping("/create")
     @ResponseBody
     public CreateUserResponse create(@RequestBody CreateUserRequest request) {
+        CreateUserResponse response = new CreateUserResponse();
         try {
             log.info("新增用户", request);
-            CreateUserResponse response = new CreateUserResponse();
+
             if(request.getProjectId() == null){
                 response.setResult(ErrorNum.INVALID_PARAM_PJO_ID);
                 return response;
@@ -84,10 +86,7 @@ public class UserRestController {
                 response.setResult(ErrorNum.INVALID_PARAM_USERNAME);
                 return response;
             }
-            if(request.getPassword() == null || request.getPassword().equals("")){
-                response.setResult(ErrorNum.INVALID_PARAM_PWD);
-                return response;
-            }
+
             Optional<Project> optionalProject = projectService.findByIdAndDeleted(request.getProjectId() , false);
             if(!optionalProject.isPresent()){
                 response.setResult(ErrorNum.INVALID_PARAM_PJO_ID);
@@ -107,9 +106,11 @@ public class UserRestController {
             user.setCreateTime(date.getTime());
             user.setUpdateTime(date.getTime());
             user.setProjectId(request.getProjectId());
+            user.setProjectName(optionalProject.get().getName());
             user.setRoleId(request.getRoleId());
             user.setUserName(request.getUserName());
-            user.setPassword(request.getPassword());
+            user.setValid(true);
+            user.setPassword(DEFAULT_PWD);
             user.setEmail(request.getEmail());
             user.setPhone(request.getPhone());
             User result = userService.save(user);
@@ -124,7 +125,6 @@ public class UserRestController {
         } catch (Exception e) {
             log.error("新增用户失败！");
             log.error(e);
-            CreateUserResponse response = new CreateUserResponse();
             response.setCode(ErrorNum.UNKNOWN.getCode());
             response.setMessage(e.getMessage());
             return response;
@@ -240,6 +240,232 @@ public class UserRestController {
             return response;
         } catch (Exception e) {
             log.error("查询用户失败！");
+            log.error(e);
+            response.setResult(ErrorNum.FAIL);
+            return response;
+        }
+    }
+
+    @Transactional
+    @PostMapping("/modify")
+    @ResponseBody
+    public ModifyUserResponse modify(@RequestBody ModifyUserRequest request) {
+        ModifyUserResponse response = new ModifyUserResponse();
+        try {
+            log.info("修改用户, {}", request);
+            log.info(JSON.toJSONString(request));
+
+            if(request.getId() == null || request.getId() <= 0){
+                log.error("修改用户失败！");
+                response.setResult(ErrorNum.INVALID_PARAM_USER_ID);
+                return response;
+            }
+            Optional<Project> optionalProject = projectService.findByIdAndDeleted(request.getProjectId() , false);
+            if(!optionalProject.isPresent()){
+                log.error("修改用户失败！");
+                response.setResult(ErrorNum.INVALID_PARAM_PJO_ID);
+                return response;
+            }
+            if(!optionalProject.get().getId().equals(request.getProjectId())){
+                log.error("修改用户失败！");
+                response.setResult(ErrorNum.INVALID_PARAM_PJO_ID);
+                return response;
+            }
+            if(request.getUserName() == null || request.getUserName().equals("")){
+                log.error("修改用户失败！");
+                response.setResult(ErrorNum.INVALID_PARAM_USERNAME);
+                return response;
+            }
+            if(request.getRoleId() == null || request.getRoleId() <= 0){
+                log.error("修改用户失败！");
+                response.setResult(ErrorNum.INVALID_PARAM_ROLE_ID);
+                return response;
+            }
+//            List<Role> exists = roleService.findAllByCodeAndDeleted(request.getCode() , false);
+//            if(exists != null && exists.size() > 0){
+//                if(exists.size() == 1){
+//                    if(!exists.get(0).getId().equals(request.getId())){
+//                        log.error("修改用户失败！");
+//                        response.setResult(ErrorNum.INVALID_PARAM_ROLE_CODE_EXIST);
+//                        return response;
+//                    }
+//                }else{
+//                    log.error("修改用户失败！");
+//                    response.setResult(ErrorNum.INVALID_PARAM_ROLE_CODE_EXIST);
+//                    return response;
+//                }
+//            }
+
+            Optional<Role> roleOptional = roleService.findByIdAndDeleted(request.getId() , false);
+            if(!roleOptional.isPresent()){
+                log.error("修改用户失败！");
+                response.setResult(ErrorNum.INVALID_PARAM_ROLE_ID);
+                return response;
+            }
+            Optional<User> optionalUser = userService.findByIdAndDeleted(request.getId() , false);
+            if(!optionalUser.isPresent()){
+                log.error("修改用户失败！");
+                response.setResult(ErrorNum.INVALID_PARAM_USER_ID);
+                return response;
+            }
+            Date date = new Date();
+            User current = optionalUser.get();
+            current.setValid(request.isValid());
+            current.setEmail(request.getEmail());
+            current.setPhone(request.getPhone());
+            current.setUpdateTime(date.getTime());
+            User result = userService.save(current);
+            if(result != null ){
+                response.getData().setUserId(result.getId());
+                log.info("修改用户成功！");
+            }else{
+                response.setResult(ErrorNum.UNKNOWN);
+                log.error("修改用户失败！");
+            }
+            return response;
+        } catch (Exception e) {
+            log.error("修改用户失败！");
+            log.error(e);
+            response.setResult(ErrorNum.FAIL);
+            return response;
+        }
+    }
+
+    @Transactional
+    @PostMapping("/batchValid")
+    @ResponseBody
+    public EmptyResponse batchValid(@RequestBody BatchValidUserRequest request) {
+        EmptyResponse response = new EmptyResponse();
+        try {
+            log.info("批量启用用户", request);
+            log.info(JSON.toJSONString(request));
+            if(request.getIds() == null || request.getIds().size() == 0){
+                log.error("批量启用用户失败！");
+                response.setResult(ErrorNum.INVALID_PARAM_USER_ID);
+                return response;
+            }
+            List<User> users = userService.findAllByIdInAndDeleted(request.getIds() , false);
+            if(users == null || users.size() == 0){
+                response.setResult(ErrorNum.INVALID_PARAM_USER_ID);
+                return response;
+            }
+            for(User user : users){
+                user.setValid(true);
+            }
+            List<User> results = userService.saveAll(users);
+            if(results != null && results.size() == users.size()){
+                response.setResult(ErrorNum.SUCCESS);
+            }else{
+                response.setResult(ErrorNum.FAIL);
+            }
+            log.info("批量启用成功！");
+            return response;
+        } catch (Exception e) {
+            log.error("批量启用失败！");
+            log.error(e);
+            response.setResult(ErrorNum.FAIL);
+            return response;
+        }
+    }
+
+    @Transactional
+    @PostMapping("/batchUnvalid")
+    @ResponseBody
+    public EmptyResponse batchUnvalid(@RequestBody BatchValidUserRequest request) {
+        EmptyResponse response = new EmptyResponse();
+        try {
+            log.info("批量禁用用户", request);
+            log.info(JSON.toJSONString(request));
+            if(request.getIds() == null || request.getIds().size() == 0){
+                log.error("批量禁用用户失败！");
+                response.setResult(ErrorNum.INVALID_PARAM_USER_ID);
+                return response;
+            }
+            List<User> users = userService.findAllByIdInAndDeleted(request.getIds() , false);
+            if(users == null || users.size() == 0){
+                response.setResult(ErrorNum.INVALID_PARAM_USER_ID);
+                return response;
+            }
+            for(User user : users){
+                user.setValid(false);
+            }
+            List<User> results = userService.saveAll(users);
+            if(results != null && results.size() == users.size()){
+                response.setResult(ErrorNum.SUCCESS);
+            }else{
+                response.setResult(ErrorNum.FAIL);
+            }
+            log.info("批量禁用成功！");
+            return response;
+        } catch (Exception e) {
+            log.error("批量禁用失败！");
+            log.error(e);
+            response.setResult(ErrorNum.FAIL);
+            return response;
+        }
+    }
+
+    @Transactional
+    @PostMapping("/delete")
+    @ResponseBody
+    public EmptyResponse delete(@RequestBody DeleteUserRequest request) {
+        EmptyResponse response = new EmptyResponse();
+        try {
+            log.info("删除用户", request);
+            log.info(JSON.toJSONString(request));
+            if(request.getId() < 0){
+                response.setResult(ErrorNum.INVALID_PARAM_USER_ID);
+                return response;
+            }
+            Optional<User> userOptional = userService.findByIdAndDeleted(request.getId() , false);
+
+            if(!userOptional.isPresent()){
+                response.setResult(ErrorNum.INVALID_PARAM_USER_ID);
+                return response;
+            }
+            User user = userOptional.get();
+            user.setDeleted(true);
+            response.setResult(userService.save(user) != null ? ErrorNum.SUCCESS : ErrorNum.FAIL);
+            log.info("删除用户成功！");
+            return response;
+        } catch (Exception e) {
+            log.error("删除用户失败！");
+            log.error(e);
+            response.setResult(ErrorNum.FAIL);
+            return response;
+        }
+    }
+
+    @Transactional
+    @PostMapping("/batchDelete")
+    @ResponseBody
+    public EmptyResponse batchDelete(@RequestBody BatchDeleteUserRequest request) {
+        EmptyResponse response = new EmptyResponse();
+        try {
+            log.info("批量删除用户", request);
+            log.info(JSON.toJSONString(request));
+            if(request.getIds() == null || request.getIds().size() == 0){
+                response.setResult(ErrorNum.INVALID_PARAM_USER_ID);
+                return response;
+            }
+            List<User> users = userService.findAllByIdInAndDeleted(request.getIds() , false);
+            if(users == null || users.size() == 0){
+                response.setResult(ErrorNum.INVALID_PARAM_USER_ID);
+                return response;
+            }
+            for(User user : users){
+                user.setDeleted(true);
+            }
+            List<User> results = userService.saveAll(users);
+            if(results != null && results.size() == users.size()){
+                response.setResult(ErrorNum.SUCCESS);
+            }else{
+                response.setResult(ErrorNum.FAIL);
+            }
+            log.info("批量删除用户成功！");
+            return response;
+        } catch (Exception e) {
+            log.error("批量删除用户失败！");
             log.error(e);
             response.setResult(ErrorNum.FAIL);
             return response;
