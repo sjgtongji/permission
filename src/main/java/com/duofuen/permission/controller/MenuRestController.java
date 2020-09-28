@@ -320,5 +320,29 @@ public class MenuRestController {
         }
     }
 
-
+    @Transactional
+    @GetMapping("/adminPanel")
+    @ResponseBody
+    public AdminPanelMenuResponse query(AdminPanelMenuRequest request) {
+        log.info("请求后台菜单数据", request);
+        log.info(JSON.toJSONString(request));
+        AdminPanelMenuResponse response = new AdminPanelMenuResponse();
+        try {
+            List<AdminPanelMenuResponse.AdminPanelMenu> menus = new ArrayList<>();
+            AdminPanelMenuResponse.AdminPanelMenu menu1 = new AdminPanelMenuResponse.AdminPanelMenu("/projects", "项目管理" ,"");
+            AdminPanelMenuResponse.AdminPanelMenu menu2 = new AdminPanelMenuResponse.AdminPanelMenu("/menus", "菜单管理" ,"");
+            AdminPanelMenuResponse.AdminPanelMenu menu3 = new AdminPanelMenuResponse.AdminPanelMenu("/roles", "角色管理" ,"");
+            AdminPanelMenuResponse.AdminPanelMenu menu4 = new AdminPanelMenuResponse.AdminPanelMenu("/users", "用户管理" ,"");
+            menus.add(menu1);
+            menus.add(menu2);
+            menus.add(menu3);
+            menus.add(menu4);
+            response.setResult(ErrorNum.SUCCESS);
+            response.getData().setMenus(menus);
+            return response;
+        }catch (Exception e){
+            response.setResult(ErrorNum.FAIL);
+            return response;
+        }
+    }
 }
