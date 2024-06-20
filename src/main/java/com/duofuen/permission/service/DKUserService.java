@@ -1,44 +1,41 @@
 package com.duofuen.permission.service;
 
 import com.duofuen.permission.common.ErrorNum;
-import com.duofuen.permission.controller.bean.LoginRequest;
-import com.duofuen.permission.controller.bean.LoginResponse;
-import com.duofuen.permission.domain.entity.Project;
+import com.duofuen.permission.controller.bean.DKLoginRequest;
+import com.duofuen.permission.controller.bean.DKLoginResponse;
+import com.duofuen.permission.domain.entity.DKUser;
 import com.duofuen.permission.domain.entity.RestToken;
-import com.duofuen.permission.domain.entity.User;
-import com.duofuen.permission.domain.repo.ProjectRepo;
+import com.duofuen.permission.domain.repo.DKStoreRepo;
+import com.duofuen.permission.domain.repo.DKUserRepo;
 import com.duofuen.permission.domain.repo.RestTokenRepo;
-import com.duofuen.permission.domain.repo.UserRepo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Base64Utils;
 
 import java.time.Instant;
 import java.util.Date;
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class UserService{
-    private final UserRepo userRepo;
-    private final ProjectRepo projectRepo;
+public class DKUserService {
+    private final DKUserRepo userRepo;
     private final RestTokenRepo restTokenRepo;
+    private final DKStoreRepo storeRepo;
     private static Logger log = LogManager.getLogger();
-    public UserService(UserRepo userRepo, ProjectRepo projectRepo, RestTokenRepo restTokenRepo) {
+    public DKUserService(DKUserRepo userRepo, RestTokenRepo restTokenRepo, DKStoreRepo storeRepo) {
         this.userRepo = userRepo;
-        this.projectRepo = projectRepo;
         this.restTokenRepo = restTokenRepo;
+        this.storeRepo = storeRepo;
     }
-
-    public LoginResponse login(LoginRequest request) {
+    public DKUser save(DKUser user){
+        return userRepo.save(user);
+    }
+    public DKLoginResponse login(DKLoginRequest request) {
         log.info("登录", request);
-        LoginResponse response = new LoginResponse();
+        DKLoginResponse response = new DKLoginResponse();
         if(request.getUserName() == null || request.getUserName().equals("")){
             response.setResult(ErrorNum.INVALID_PARAM_USERNAME);
             return response;
@@ -48,26 +45,23 @@ public class UserService{
             response.setResult(ErrorNum.INVALID_PARAM_PWD);
             return response;
         }
-        Optional<User> userOptional = findByUsernameAndPassword(request.getUserName() , request.getPassword());
+        Optional<DKUser> userOptional = findByUsernameAndPassword(request.getUserName() , request.getPassword());
         if(!userOptional.isPresent()){
             response.setResult(ErrorNum.INVALID_PARAM_USERNAME);
             return response;
         }
-        User user = userOptional.get();
+        DKUser user = userOptional.get();
         response.getData().setToken(updateToken(user.getId()));
         response.getData().setUserId(user.getId());
         return response;
     }
 
-    public Optional<User> queryById(Integer userId){
-        return userRepo.findById(userId);
-    }
+//    public Optional<User> queryById(Integer userId){
+//        return userRepo.findById(userId);
+//    }
+//
 
-    public User save(User user){
-        return userRepo.save(user);
-    }
-
-    public Optional<User> findByUsernameAndPassword(String username, String password){
+    public Optional<DKUser> findByUsernameAndPassword(String username, String password){
         return userRepo.findByUserNameAndPassword(username , password);
     }
 
@@ -95,27 +89,27 @@ public class UserService{
         restTokenRepo.save(token);
         return token.getToken();
     }
-
-    public Page<User> findAll(Specification<User> specification, Pageable pageable) {
-        return userRepo.findAll(specification , pageable);
-    }
-
-    public long count(Specification<User> specification){
-        return userRepo.count(specification);
-    }
-
-    public Optional<User> findByIdAndDeleted(Integer id , boolean deleted){
+//
+//    public Page<User> findAll(Specification<User> specification, Pageable pageable) {
+//        return userRepo.findAll(specification , pageable);
+//    }
+//
+//    public long count(Specification<User> specification){
+//        return userRepo.count(specification);
+//    }
+//
+    public Optional<DKUser> findByIdAndDeleted(Integer id , boolean deleted){
         return userRepo.findByIdAndDeleted(id , deleted);
     }
-
-    public List<User> findAllByIdInAndDeleted(List<Integer> ids , boolean deleted){
-        return userRepo.findAllByIdInAndDeleted(ids , deleted);
-    }
-
-    public List<User> saveAll(List<User> users){
-        return userRepo.saveAll(users);
-    }
-
+//
+//    public List<User> findAllByIdInAndDeleted(List<Integer> ids , boolean deleted){
+//        return userRepo.findAllByIdInAndDeleted(ids , deleted);
+//    }
+//
+//    public List<User> saveAll(List<User> users){
+//        return userRepo.saveAll(users);
+//    }
+//
     public boolean tokenValid(String token){
         Optional<RestToken> restToken = restTokenRepo.findByToken(token);
         if(!restToken.isPresent()){
@@ -124,5 +118,19 @@ public class UserService{
         return restToken.get().getExpireTime().before(Date.from(Instant.now()));
     }
 
-
+    public DKUser findUserByToken(String token){
+        if(!tokenValid(token)){
+            return null;
+        }
+        Optional<RestToken> restToken = restTokenRepo.findByToken(token);
+        if(!restToken.isPresent()){
+            return null;
+        }
+        Integer userId = restToken.get().getUserId();
+        Optional<DKUser> user = userRepo.findByIdAndDeleted(userId , false);
+        if(!user.isPresent()){
+            return null;
+        }
+        return user.get();
+    }
 }
