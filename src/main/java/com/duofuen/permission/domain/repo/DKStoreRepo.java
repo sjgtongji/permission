@@ -14,7 +14,7 @@ import java.util.Optional;
 
 public interface DKStoreRepo extends JpaRepository<DKStore, Integer>, JpaSpecificationExecutor<DKStore> {
     Optional<DKStore> findByIdAndDeleted(Integer id , boolean deleted);
-    List<DKStore> findAllById(List<Integer> ids , boolean deleted);
-    Page<DKStore> findAllByDeleted(Specification<Menu> specification , Pageable pageable, boolean deleted);
+    List<DKStore> findAllByIdAndDeleted(List<Integer> ids , boolean deleted);
+    List<DKStore> findAllByDeleted(boolean deleted);
 }
 

@@ -333,10 +333,18 @@ public class MenuRestController {
             AdminPanelMenuResponse.AdminPanelMenu menu2 = new AdminPanelMenuResponse.AdminPanelMenu("/menus", "菜单管理" ,"");
             AdminPanelMenuResponse.AdminPanelMenu menu3 = new AdminPanelMenuResponse.AdminPanelMenu("/roles", "角色管理" ,"");
             AdminPanelMenuResponse.AdminPanelMenu menu4 = new AdminPanelMenuResponse.AdminPanelMenu("/users", "用户管理" ,"");
+            AdminPanelMenuResponse.AdminPanelMenu menu5 = new AdminPanelMenuResponse.AdminPanelMenu("/stores", "门店管理" ,"");
+            AdminPanelMenuResponse.AdminPanelMenu menu6 = new AdminPanelMenuResponse.AdminPanelMenu("/dkroles", "角色管理" ,"");
+            AdminPanelMenuResponse.AdminPanelMenu menu7 = new AdminPanelMenuResponse.AdminPanelMenu("/dkusers", "用户管理" ,"");
+            AdminPanelMenuResponse.AdminPanelMenu menu8 = new AdminPanelMenuResponse.AdminPanelMenu("/dkmenus", "菜单管理" ,"");
             menus.add(menu1);
             menus.add(menu2);
             menus.add(menu3);
             menus.add(menu4);
+            menus.add(menu5);
+            menus.add(menu6);
+            menus.add(menu7);
+            menus.add(menu8);
             response.setResult(ErrorNum.SUCCESS);
             response.getData().setMenus(menus);
             return response;

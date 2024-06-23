@@ -4,7 +4,7 @@ public class CreateDKMenuRequest {
     private String token;
     private String name;
     private String path = "";
-    private Integer storeId;
+    private Integer dkStoreId;
     private Integer permission;
     public String getToken() {
         return token;
@@ -30,12 +30,12 @@ public class CreateDKMenuRequest {
         this.path = path;
     }
 
-    public Integer getStoreId() {
-        return storeId;
+    public Integer getDkStoreId() {
+        return dkStoreId;
     }
 
-    public void setStoreId(Integer storeId) {
-        this.storeId = storeId;
+    public void setDkStoreId(Integer dkStoreId) {
+        this.dkStoreId = dkStoreId;
     }
 
     public Integer getPermission() {

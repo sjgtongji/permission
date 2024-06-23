@@ -25,6 +25,7 @@ public class DKUser {
     private String phone;
     private String email;
 
+    private boolean admin = false;
     @Column(name = "dk_role_id")
     private Integer dkRoleId;
 
@@ -173,5 +174,13 @@ public class DKUser {
 
     public void setDkStoreName(String dkStoreName) {
         this.dkStoreName = dkStoreName;
+    }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 }

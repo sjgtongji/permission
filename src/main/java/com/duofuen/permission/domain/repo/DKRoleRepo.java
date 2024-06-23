@@ -1,6 +1,7 @@
 package com.duofuen.permission.domain.repo;
 
 import com.duofuen.permission.domain.entity.DKRole;
+import com.duofuen.permission.domain.entity.DKStore;
 import com.duofuen.permission.domain.entity.Role;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,4 +16,6 @@ public interface DKRoleRepo extends JpaRepository<DKRole, Integer>, JpaSpecifica
 
     Page<DKRole> findAll(Specification<DKRole> specification , Pageable pageable);
     Optional<DKRole> findByIdAndDeleted(Integer id, boolean deleted);
+    List<DKRole> findAllByDeleted(boolean deleted);
+    List<DKRole> findAllByDkStoreIdAndDeleted(Integer dkStoreId, boolean deleted);
 }

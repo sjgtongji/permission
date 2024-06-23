@@ -13,7 +13,8 @@ import java.util.Optional;
 
 public interface DKMenuRepo extends JpaRepository<DKMenu , Integer>, JpaSpecificationExecutor<DKMenu> {
 
-    Page<DKMenu> findAllByStoreIdAndDeleted(Integer storeId , boolean deleted , Pageable pageable);
+    Page<DKMenu> findAllByDkStoreIdAndDeleted(Integer storeId , boolean deleted , Pageable pageable);
     Page<DKMenu> findAll(Specification<DKMenu> specification , Pageable pageable);
     Optional<DKMenu> findByIdAndDeleted(Integer id, boolean deleted);
+    List<DKMenu> findAllByDkStoreIdAndDeleted(Integer storeId , boolean deleted);
 }

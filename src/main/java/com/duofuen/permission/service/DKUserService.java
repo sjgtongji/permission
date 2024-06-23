@@ -5,11 +5,15 @@ import com.duofuen.permission.controller.bean.DKLoginRequest;
 import com.duofuen.permission.controller.bean.DKLoginResponse;
 import com.duofuen.permission.domain.entity.DKUser;
 import com.duofuen.permission.domain.entity.RestToken;
+import com.duofuen.permission.domain.entity.User;
 import com.duofuen.permission.domain.repo.DKStoreRepo;
 import com.duofuen.permission.domain.repo.DKUserRepo;
 import com.duofuen.permission.domain.repo.RestTokenRepo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Base64Utils;
@@ -69,24 +73,35 @@ public class DKUserService {
     public String updateToken(Integer userId) {
         Date expireTime = Date.from(Instant.now().plusSeconds(1800));
         Optional<RestToken> restToken = restTokenRepo.findByUserId(userId);
-        RestToken token = restToken.get();
-        if (null != token) {
-            // if not expire, update expireTime
-            // if expired, generate new token and update expireTime
-            if (Instant.now().isAfter(restToken.get().getExpireTime().toInstant())) {
-                String newToken = Base64Utils.encodeToString(UUID.randomUUID().toString().getBytes());
-                token.setToken(newToken);
-            }
-            restToken.get().setExpireTime(expireTime);
-        } else {
+        RestToken token = null;
+        if(!restToken.isPresent()){
             token = new RestToken();
-
             token.setUserId(userId);
             token.setToken(Base64Utils.encodeToString(UUID.randomUUID().toString().getBytes()));
             token.setExpireTime(expireTime);
+            restTokenRepo.save(token);
+        }else{
+            token = restToken.get();
+            if (null != token) {
+                // if not expire, update expireTime
+                // if expired, generate new token and update expireTime
+                if (Instant.now().isAfter(restToken.get().getExpireTime().toInstant())) {
+                    String newToken = Base64Utils.encodeToString(UUID.randomUUID().toString().getBytes());
+                    token.setToken(newToken);
+                }
+                restToken.get().setExpireTime(expireTime);
+            } else {
+                token = new RestToken();
+
+                token.setUserId(userId);
+                token.setToken(Base64Utils.encodeToString(UUID.randomUUID().toString().getBytes()));
+                token.setExpireTime(expireTime);
+            }
+            restTokenRepo.save(token);
         }
+
         log.info("rest token updated deviceId {}, token {}， expireTime {}", userId, token.getToken(), expireTime);
-        restTokenRepo.save(token);
+
         return token.getToken();
     }
 //
@@ -115,7 +130,15 @@ public class DKUserService {
         if(!restToken.isPresent()){
             return false;
         }
-        return restToken.get().getExpireTime().before(Date.from(Instant.now()));
+        return restToken.get().getExpireTime().after(Date.from(Instant.now()));
+    }
+
+    public boolean isAdmin(String token){
+        DKUser user = findUserByToken(token);
+        if(user == null){
+            return false;
+        }
+        return user.isAdmin();
     }
 
     public DKUser findUserByToken(String token){
@@ -132,5 +155,13 @@ public class DKUserService {
             return null;
         }
         return user.get();
+    }
+
+    public Page<DKUser> findAll(Specification<DKUser> specification, Pageable pageable) {
+        return userRepo.findAll(specification , pageable);
+    }
+
+    public long count(Specification<DKUser> specification){
+        return userRepo.count(specification);
     }
 }

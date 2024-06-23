@@ -5,7 +5,7 @@ import java.util.List;
 public class CreateDKRoleRequest {
     private String name;
     private Integer permission;
-    private Integer storeId;
+    private Integer dkStoreId;
     private String token;
 
     public String getName() {
@@ -25,12 +25,13 @@ public class CreateDKRoleRequest {
         this.permission = permission;
     }
 
-    public Integer getStoreId() {
-        return storeId;
+
+    public Integer getDkStoreId() {
+        return dkStoreId;
     }
 
-    public void setStoreId(Integer storeId) {
-        this.storeId = storeId;
+    public void setDkStoreId(Integer dkStoreId) {
+        this.dkStoreId = dkStoreId;
     }
 
     public String getToken() {

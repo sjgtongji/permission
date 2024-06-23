@@ -1,6 +1,7 @@
 package com.duofuen.permission.service;
 
 import com.duofuen.permission.domain.entity.DKRole;
+import com.duofuen.permission.domain.entity.DKStore;
 import com.duofuen.permission.domain.repo.DKRoleRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -43,6 +44,14 @@ public class DKRoleService {
 
     public List<DKRole> saveAll(List<DKRole> roles){
         return roleRepo.saveAll(roles);
+    }
+
+    public List<DKRole> findAllForSelect(){
+        return roleRepo.findAllByDeleted(false);
+    }
+
+    public List<DKRole> findAllByDkStoreIdAndDeleted(Integer dkStoreId, boolean deleted){
+        return roleRepo.findAllByDkStoreIdAndDeleted(dkStoreId , false);
     }
 
 }

@@ -3,11 +3,11 @@ package com.duofuen.permission.controller.bean;
 public class ModifyDKUserRequest {
     private String token;
     private Integer id;
-    private Integer roleId;
+    private Integer dkRoleId;
     private String userName;
     private String phone;
     private String email;
-    private Integer storeId;
+    private Integer dkStoreId;
 
 
     public String getToken() {
@@ -26,13 +26,6 @@ public class ModifyDKUserRequest {
         this.id = id;
     }
 
-    public Integer getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(Integer roleId) {
-        this.roleId = roleId;
-    }
 
     public String getUserName() {
         return userName;
@@ -58,11 +51,19 @@ public class ModifyDKUserRequest {
         this.email = email;
     }
 
-    public Integer getStoreId() {
-        return storeId;
+    public Integer getDkRoleId() {
+        return dkRoleId;
     }
 
-    public void setStoreId(Integer storeId) {
-        this.storeId = storeId;
+    public void setDkRoleId(Integer dkRoleId) {
+        this.dkRoleId = dkRoleId;
+    }
+
+    public Integer getDkStoreId() {
+        return dkStoreId;
+    }
+
+    public void setDkStoreId(Integer dkStoreId) {
+        this.dkStoreId = dkStoreId;
     }
 }

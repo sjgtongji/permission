@@ -2,19 +2,12 @@ package com.duofuen.permission.controller.bean;
 
 public class CreateDKUserRequest {
     private String token;
-    private Integer roleId;
+    private Integer dkRoleId;
     private String userName;
     private String phone;
     private String email;
-    private Integer storeId;
+    private Integer dkStoreId;
 
-    public Integer getStoreId() {
-        return storeId;
-    }
-
-    public void setStoreId(Integer storeId) {
-        this.storeId = storeId;
-    }
 
     public String getToken() {
         return token;
@@ -24,13 +17,6 @@ public class CreateDKUserRequest {
         this.token = token;
     }
 
-    public Integer getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(Integer roleId) {
-        this.roleId = roleId;
-    }
 
     public String getUserName() {
         return userName;
@@ -54,5 +40,21 @@ public class CreateDKUserRequest {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Integer getDkRoleId() {
+        return dkRoleId;
+    }
+
+    public void setDkRoleId(Integer dkRoleId) {
+        this.dkRoleId = dkRoleId;
+    }
+
+    public Integer getDkStoreId() {
+        return dkStoreId;
+    }
+
+    public void setDkStoreId(Integer dkStoreId) {
+        this.dkStoreId = dkStoreId;
     }
 }

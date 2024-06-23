@@ -5,7 +5,7 @@ public class ModifyDKMenuRequest {
     private Integer id;
     private String name;
     private String path = "";
-    private Integer storeId;
+    private Integer dkStoreId;
     private Integer permission;
 
     public Integer getId() {
@@ -40,12 +40,12 @@ public class ModifyDKMenuRequest {
         this.path = path;
     }
 
-    public Integer getStoreId() {
-        return storeId;
+    public Integer getDkStoreId() {
+        return dkStoreId;
     }
 
-    public void setStoreId(Integer storeId) {
-        this.storeId = storeId;
+    public void setDkStoreId(Integer dkStoreId) {
+        this.dkStoreId = dkStoreId;
     }
 
     public Integer getPermission() {

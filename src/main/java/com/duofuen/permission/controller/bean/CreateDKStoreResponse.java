@@ -10,6 +10,15 @@ public class CreateDKStoreResponse extends BaseResponse<CreateDKStoreResponse.Da
     }
 
     public class Data {
+        @JsonInclude(JsonInclude.Include.NON_NULL)
+        private Integer id;
 
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
     }
 }
