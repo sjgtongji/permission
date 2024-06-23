@@ -2,39 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d0d2da95-8a89-49d2-9ff9-c86d9fdd2513" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/QueryDKMenuRequest.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/QueryDKMenuResponse.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/QueryDKRoleForSelectRequest.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/QueryDKRoleForSelectResponse.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/QueryDKRoleRequest.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/QueryDKRoleResponse.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/QueryDKStoreForSelectRequest.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/QueryDKStoreForSelectResponse.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/QueryDKStoreRequest.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/QueryDKStoreResponse.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/QueryDKUserRequest.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/QueryDKUserResponse.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/DKCatagoryRestController.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/CreateDKCatagoryRequest.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/CreateDKCatagoryResponse.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/ModifyDKCatagoryRequest.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/ModifyDKCatagoryResponse.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/QueryDKCatagoryForSelectRequest.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/QueryDKCatagoryForSelectResponse.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/QueryDKCatagoryRequest.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/QueryDKCatagoryResponse.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/entity/DKCatagory.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/repo/DKCatagoryRepo.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/service/DKCatagoryService.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/DKMenuRestController.java" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/DKMenuRestController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/DKRoleRestController.java" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/DKRoleRestController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/DKStoreRestController.java" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/DKStoreRestController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/DKUserRestController.java" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/DKUserRestController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/MenuRestController.java" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/MenuRestController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/AdminPanelMenuRequest.java" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/AdminPanelMenuRequest.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/CreateDKMenuRequest.java" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/CreateDKMenuRequest.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/CreateDKRoleRequest.java" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/CreateDKRoleRequest.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/CreateDKStoreResponse.java" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/CreateDKStoreResponse.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/CreateDKUserRequest.java" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/CreateDKUserRequest.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/ModifyDKMenuRequest.java" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/ModifyDKMenuRequest.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/ModifyDKUserRequest.java" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/ModifyDKUserRequest.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/entity/DKUser.java" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/entity/DKUser.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/repo/DKMenuRepo.java" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/repo/DKMenuRepo.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/repo/DKRoleRepo.java" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/repo/DKRoleRepo.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/repo/DKStoreRepo.java" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/repo/DKStoreRepo.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/service/DKMenuService.java" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/service/DKMenuService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/service/DKRoleService.java" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/service/DKRoleService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/service/DKStoreService.java" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/service/DKStoreService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/service/DKUserService.java" afterPath="$PROJECT_DIR$/src/main/java/com/duofuen/permission/service/DKUserService.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -53,91 +33,71 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MenuRepo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/repo/MenuRepo.java">
+      <file leaf-file-name="ModifyDKCatagoryRequest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/ModifyDKCatagoryRequest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="20" column="42" lean-forward="false" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProjectRepo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/repo/ProjectRepo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="19" column="52" lean-forward="true" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="52" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DKMenuRepo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/repo/DKMenuRepo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="18" column="4" lean-forward="true" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="81" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MenuService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/service/MenuService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="37">
-              <caret line="43" column="5" lean-forward="true" selection-start-line="41" selection-start-column="4" selection-end-line="43" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DKMenuRestController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/DKMenuRestController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-55">
-              <caret line="164" column="13" lean-forward="true" selection-start-line="164" selection-start-column="13" selection-end-line="164" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ModifyDKMenuRequest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/ModifyDKMenuRequest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+            <state relative-caret-position="480">
+              <caret line="32" column="30" lean-forward="true" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
               <folding>
-                <element signature="e#803#804#0" expanded="true" />
-                <element signature="e#835#836#0" expanded="true" />
-                <element signature="e#886#887#0" expanded="true" />
-                <element signature="e#928#929#0" expanded="true" />
+                <element signature="e#222#223#0" expanded="true" />
+                <element signature="e#247#248#0" expanded="true" />
+                <element signature="e#284#285#0" expanded="true" />
+                <element signature="e#312#313#0" expanded="true" />
+                <element signature="e#343#344#0" expanded="true" />
+                <element signature="e#370#371#0" expanded="true" />
+                <element signature="e#410#411#0" expanded="true" />
+                <element signature="e#442#443#0" expanded="true" />
+                <element signature="e#479#480#0" expanded="true" />
+                <element signature="e#511#512#0" expanded="true" />
+                <element signature="e#562#563#0" expanded="true" />
+                <element signature="e#604#605#0" expanded="true" />
+                <element signature="e#664#665#0" expanded="true" />
+                <element signature="e#706#707#0" expanded="true" />
+                <element signature="e#740#741#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ErrorNum.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/common/ErrorNum.java">
+      <file leaf-file-name="CreateDKCatagoryRequest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/CreateDKCatagoryRequest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="28" column="42" lean-forward="true" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
+            <state relative-caret-position="105">
+              <caret line="7" column="29" lean-forward="false" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
+              <folding>
+                <element signature="e#226#227#0" expanded="true" />
+                <element signature="e#266#267#0" expanded="true" />
+                <element signature="e#298#299#0" expanded="true" />
+                <element signature="e#335#336#0" expanded="true" />
+                <element signature="e#367#368#0" expanded="true" />
+                <element signature="e#418#419#0" expanded="true" />
+                <element signature="e#460#461#0" expanded="true" />
+                <element signature="e#492#493#0" expanded="true" />
+                <element signature="e#520#521#0" expanded="true" />
+                <element signature="e#562#563#0" expanded="true" />
+                <element signature="e#596#597#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ModifyDKCatagoryResponse.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/ModifyDKCatagoryResponse.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CreateDKMenuRequest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/CreateDKMenuRequest.java">
+      <file leaf-file-name="DKCatagoryRestController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/DKCatagoryRestController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+            <state relative-caret-position="348">
+              <caret line="186" column="35" lean-forward="true" selection-start-line="186" selection-start-column="35" selection-end-line="186" selection-end-column="35" />
               <folding>
-                <element signature="e#658#659#0" expanded="true" />
-                <element signature="e#690#691#0" expanded="true" />
-                <element signature="e#741#742#0" expanded="true" />
-                <element signature="e#783#784#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -146,9 +106,53 @@
       <file leaf-file-name="DKMenuService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/service/DKMenuService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="37" column="69" lean-forward="true" selection-start-line="37" selection-start-column="69" selection-end-line="37" selection-end-column="69" />
+            <state relative-caret-position="345">
+              <caret line="38" column="5" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="38" selection-end-column="5" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DKCatagoryService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/service/DKCatagoryService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="495">
+              <caret line="39" column="1" lean-forward="true" selection-start-line="39" selection-start-column="1" selection-end-line="39" selection-end-column="1" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DKRoleService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/service/DKRoleService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DKMenuRestController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/DKMenuRestController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="164" column="13" lean-forward="true" selection-start-line="164" selection-start-column="13" selection-end-line="164" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DKStoreRestController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/DKStoreRestController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="122" column="17" lean-forward="false" selection-start-line="122" selection-start-column="5" selection-end-line="122" selection-end-column="17" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -156,8 +160,8 @@
       <file leaf-file-name="DKRoleRestController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/DKRoleRestController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="165" column="42" lean-forward="true" selection-start-line="165" selection-start-column="42" selection-end-line="165" selection-end-column="42" />
+            <state relative-caret-position="494">
+              <caret line="302" column="5" lean-forward="true" selection-start-line="43" selection-start-column="4" selection-end-line="302" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -175,7 +179,11 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>daikou</find>
+      <find>角色</find>
     </findStrings>
+    <replaceStrings>
+      <replace>商品类别</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -509,19 +517,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/CreateDKStoreRequest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/repo/RestTokenRepo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/repo/DKUserRepo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/DKLoginRequest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/repo/UserRepo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/duofuen/permission/service/UserService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/CreateDKMenuResponse.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/duofuen/permission/common/ErrorNum.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/CreateDKUserResponse.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/entity/DKRole.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/CreateDKRoleResponse.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/ModifyDKMenuResponse.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/ModifyDKRoleRequest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/ModifyDKRoleResponse.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/ModifyDKStoreRequest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/ModifyDKStoreResponse.java" />
@@ -560,6 +555,19 @@
         <option value="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/CreateDKMenuRequest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/ModifyDKMenuRequest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/DKMenuRestController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/entity/DKCatagory.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/repo/DKCatagoryRepo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/CreateDKCatagoryRequest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/CreateDKRoleResponse.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/CreateDKCatagoryResponse.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/QueryDKCatagoryRequest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/QueryDKCatagoryResponse.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/QueryDKCatagoryForSelectRequest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/QueryDKCatagoryForSelectResponse.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/ModifyDKCatagoryResponse.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/duofuen/permission/service/DKCatagoryService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/ModifyDKCatagoryRequest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/DKCatagoryRestController.java" />
       </list>
     </option>
   </component>
@@ -982,248 +990,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/service/DKStoreService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="39" column="5" lean-forward="true" selection-start-line="37" selection-start-column="4" selection-end-line="39" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1187#1188#0" expanded="false" />
-            <element signature="e#1245#1246#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/service/RoleService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14">
-          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/entity/DKRole.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/CreateDKRoleRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="41" column="20" lean-forward="true" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
-          <folding>
-            <element signature="e#557#558#0" expanded="true" />
-            <element signature="e#589#590#0" expanded="true" />
-            <element signature="e#640#641#0" expanded="true" />
-            <element signature="e#682#683#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/QueryDKUserRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="11" column="29" lean-forward="true" selection-start-line="3" selection-start-column="4" selection-end-line="11" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/QueryDKUserResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="9" column="79" lean-forward="true" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="79" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/repo/DKStoreRepo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="17" column="52" lean-forward="true" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/QueryRoleForSelectRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="0" lean-forward="true" selection-start-line="3" selection-start-column="4" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/QueryDKRoleRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="56" column="29" lean-forward="true" selection-start-line="56" selection-start-column="29" selection-end-line="56" selection-end-column="29" />
-          <folding>
-            <element signature="e#329#330#0" expanded="true" />
-            <element signature="e#359#360#0" expanded="true" />
-            <element signature="e#402#403#0" expanded="true" />
-            <element signature="e#440#441#0" expanded="true" />
-            <element signature="e#472#473#0" expanded="true" />
-            <element signature="e#503#504#0" expanded="true" />
-            <element signature="e#548#549#0" expanded="true" />
-            <element signature="e#588#589#0" expanded="true" />
-            <element signature="e#625#626#0" expanded="true" />
-            <element signature="e#658#659#0" expanded="true" />
-            <element signature="e#710#711#0" expanded="true" />
-            <element signature="e#754#755#0" expanded="true" />
-            <element signature="e#785#786#0" expanded="true" />
-            <element signature="e#812#813#0" expanded="true" />
-            <element signature="e#852#853#0" expanded="true" />
-            <element signature="e#884#885#0" expanded="true" />
-            <element signature="e#922#923#0" expanded="true" />
-            <element signature="e#955#956#0" expanded="true" />
-            <element signature="e#1008#1009#0" expanded="true" />
-            <element signature="e#1052#1053#0" expanded="true" />
-            <element signature="e#1085#1086#0" expanded="true" />
-            <element signature="e#1114#1115#0" expanded="true" />
-            <element signature="e#1158#1159#0" expanded="true" />
-            <element signature="e#1194#1195#0" expanded="true" />
-            <element signature="e#1232#1233#0" expanded="true" />
-            <element signature="e#1266#1267#0" expanded="true" />
-            <element signature="e#1320#1321#0" expanded="true" />
-            <element signature="e#1366#1367#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/QueryDKRoleForSelectRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding>
-            <element signature="e#158#159#0" expanded="true" />
-            <element signature="e#190#191#0" expanded="true" />
-            <element signature="e#241#242#0" expanded="true" />
-            <element signature="e#283#284#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/repo/DKRoleRepo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="19" column="45" lean-forward="false" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/RoleRestController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="531">
-          <caret line="476" column="28" lean-forward="true" selection-start-line="460" selection-start-column="12" selection-end-line="476" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/service/DKRoleService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="53" column="72" lean-forward="false" selection-start-line="53" selection-start-column="72" selection-end-line="53" selection-end-column="72" />
-          <folding>
-            <element signature="e#1430#1431#0" expanded="false" />
-            <element signature="e#1485#1486#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/QueryDKRoleForSelectResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="27" column="1" lean-forward="true" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/ProjectRestController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1324">
-          <caret line="117" column="81" lean-forward="true" selection-start-line="117" selection-start-column="81" selection-end-line="117" selection-end-column="81" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/CreateDKUserRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding>
-            <element signature="e#850#851#0" expanded="true" />
-            <element signature="e#881#882#0" expanded="true" />
-            <element signature="e#930#931#0" expanded="true" />
-            <element signature="e#970#971#0" expanded="true" />
-            <element signature="e#1007#1008#0" expanded="true" />
-            <element signature="e#1039#1040#0" expanded="true" />
-            <element signature="e#1090#1091#0" expanded="true" />
-            <element signature="e#1132#1133#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/ModifyDKUserResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/ModifyDKUserRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="50" column="17" lean-forward="true" selection-start-line="50" selection-start-column="17" selection-end-line="50" selection-end-column="17" />
-          <folding>
-            <element signature="e#994#995#0" expanded="true" />
-            <element signature="e#1025#1026#0" expanded="true" />
-            <element signature="e#1074#1075#0" expanded="true" />
-            <element signature="e#1114#1115#0" expanded="true" />
-            <element signature="e#1151#1152#0" expanded="true" />
-            <element signature="e#1183#1184#0" expanded="true" />
-            <element signature="e#1234#1235#0" expanded="true" />
-            <element signature="e#1276#1277#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/entity/Role.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-139">
-          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/entity/Menu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="42" column="15" lean-forward="true" selection-start-line="42" selection-start-column="15" selection-end-line="42" selection-end-column="15" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/entity/Project.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/entity/DKStore.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="25" column="32" lean-forward="true" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/QueryDKStoreResponse.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -1236,42 +1002,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="24" lean-forward="true" selection-start-line="3" selection-start-column="4" selection-end-line="11" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/QueryDKRoleResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="66" column="5" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="66" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#763#764#0" expanded="true" />
-            <element signature="e#798#799#0" expanded="true" />
-            <element signature="e#848#849#0" expanded="true" />
-            <element signature="e#888#889#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/QueryDKMenuResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="61" column="9" lean-forward="true" selection-start-line="61" selection-start-column="9" selection-end-line="61" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#763#764#0" expanded="true" />
-            <element signature="e#798#799#0" expanded="true" />
-            <element signature="e#848#849#0" expanded="true" />
-            <element signature="e#888#889#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/entity/DKMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="35" column="30" lean-forward="false" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="30" />
           <folding />
         </state>
       </provider>
@@ -1297,19 +1027,6 @@
         <state relative-caret-position="570">
           <caret line="42" column="31" lean-forward="true" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/entity/DKUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding>
-            <element signature="e#3649#3650#0" expanded="true" />
-            <element signature="e#3677#3678#0" expanded="true" />
-            <element signature="e#3720#3721#0" expanded="true" />
-            <element signature="e#3754#3755#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1345,19 +1062,192 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/DKStoreRestController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/MenuRestController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1710">
-          <caret line="122" column="17" lean-forward="false" selection-start-line="122" selection-start-column="5" selection-end-line="122" selection-end-column="17" />
+        <state relative-caret-position="359">
+          <caret line="340" column="29" lean-forward="true" selection-start-line="340" selection-start-column="29" selection-end-line="340" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/AdminPanelMenuRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="27" lean-forward="true" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+          <folding>
+            <element signature="e#142#143#0" expanded="true" />
+            <element signature="e#170#171#0" expanded="true" />
+            <element signature="e#212#213#0" expanded="true" />
+            <element signature="e#246#247#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/repo/MenuRepo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="20" column="42" lean-forward="false" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/repo/ProjectRepo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="19" column="52" lean-forward="true" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/service/MenuService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="37">
+          <caret line="43" column="5" lean-forward="true" selection-start-line="41" selection-start-column="4" selection-end-line="43" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/CreateDKMenuRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding>
+            <element signature="e#658#659#0" expanded="true" />
+            <element signature="e#690#691#0" expanded="true" />
+            <element signature="e#741#742#0" expanded="true" />
+            <element signature="e#783#784#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/common/ErrorNum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="28" column="42" lean-forward="true" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/ModifyDKMenuRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding>
+            <element signature="e#803#804#0" expanded="true" />
+            <element signature="e#835#836#0" expanded="true" />
+            <element signature="e#886#887#0" expanded="true" />
+            <element signature="e#928#929#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/entity/DKMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="7" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/entity/DKUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="46" column="31" lean-forward="true" selection-start-line="37" selection-start-column="3" selection-end-line="46" selection-end-column="31" />
+          <folding>
+            <element signature="e#3649#3650#0" expanded="true" />
+            <element signature="e#3677#3678#0" expanded="true" />
+            <element signature="e#3720#3721#0" expanded="true" />
+            <element signature="e#3754#3755#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/entity/DKCatagory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-676">
+          <caret line="31" column="28" lean-forward="true" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#816#817#0" expanded="true" />
+            <element signature="e#853#854#0" expanded="true" />
+            <element signature="e#881#882#0" expanded="true" />
+            <element signature="e#916#917#0" expanded="true" />
+            <element signature="e#946#947#0" expanded="true" />
+            <element signature="e#993#994#0" expanded="true" />
+            <element signature="e#1031#1032#0" expanded="true" />
+            <element signature="e#1066#1067#0" expanded="true" />
+            <element signature="e#1099#1100#0" expanded="true" />
+            <element signature="e#1149#1150#0" expanded="true" />
+            <element signature="e#1193#1194#0" expanded="true" />
+            <element signature="e#1228#1229#0" expanded="true" />
+            <element signature="e#1261#1262#0" expanded="true" />
+            <element signature="e#1311#1312#0" expanded="true" />
+            <element signature="e#1355#1356#0" expanded="true" />
+            <element signature="e#1387#1388#0" expanded="true" />
+            <element signature="e#1414#1415#0" expanded="true" />
+            <element signature="e#1455#1456#0" expanded="true" />
+            <element signature="e#1487#1488#0" expanded="true" />
+            <element signature="e#1518#1519#0" expanded="true" />
+            <element signature="e#1545#1546#0" expanded="true" />
+            <element signature="e#1585#1586#0" expanded="true" />
+            <element signature="e#1617#1618#0" expanded="true" />
+            <element signature="e#1651#1652#0" expanded="true" />
+            <element signature="e#1681#1682#0" expanded="true" />
+            <element signature="e#1728#1729#0" expanded="true" />
+            <element signature="e#1766#1767#0" expanded="true" />
+            <element signature="e#1803#1804#0" expanded="true" />
+            <element signature="e#1835#1836#0" expanded="true" />
+            <element signature="e#1886#1887#0" expanded="true" />
+            <element signature="e#1928#1929#0" expanded="true" />
+            <element signature="e#1963#1964#0" expanded="true" />
+            <element signature="e#1993#1994#0" expanded="true" />
+            <element signature="e#2040#2041#0" expanded="true" />
+            <element signature="e#2078#2079#0" expanded="true" />
+            <element signature="e#2116#2117#0" expanded="true" />
+            <element signature="e#2150#2151#0" expanded="true" />
+            <element signature="e#2204#2205#0" expanded="true" />
+            <element signature="e#2250#2251#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/repo/DKMenuRepo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="13" column="102" lean-forward="false" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="102" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/repo/DKUserRepo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="11" column="70" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/service/DKUserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="463">
+          <caret line="96" column="49" lean-forward="false" selection-start-line="96" selection-start-column="49" selection-end-line="96" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/repo/DKCatagoryRepo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="84" lean-forward="false" selection-start-line="12" selection-start-column="84" selection-end-line="12" selection-end-column="84" />
+          <folding>
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/QueryDKMenuRequest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
+        <state relative-caret-position="60">
           <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1397,130 +1287,351 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/MenuRestController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/QueryDKMenuResponse.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="340" column="29" lean-forward="true" selection-start-line="340" selection-start-column="29" selection-end-line="340" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/AdminPanelMenuRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="27" lean-forward="true" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+        <state relative-caret-position="635">
+          <caret line="61" column="9" lean-forward="true" selection-start-line="61" selection-start-column="9" selection-end-line="61" selection-end-column="9" />
           <folding>
-            <element signature="e#142#143#0" expanded="true" />
-            <element signature="e#170#171#0" expanded="true" />
-            <element signature="e#212#213#0" expanded="true" />
-            <element signature="e#246#247#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#763#764#0" expanded="false" />
+            <element signature="e#798#799#0" expanded="false" />
+            <element signature="e#848#849#0" expanded="false" />
+            <element signature="e#888#889#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/service/DKUserService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/CreateDKUserRequest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="463">
-          <caret line="96" column="49" lean-forward="false" selection-start-line="96" selection-start-column="49" selection-end-line="96" selection-end-column="49" />
-          <folding />
+        <state relative-caret-position="75">
+          <caret line="5" column="28" lean-forward="true" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
+          <folding>
+            <element signature="e#850#851#0" expanded="true" />
+            <element signature="e#881#882#0" expanded="true" />
+            <element signature="e#930#931#0" expanded="true" />
+            <element signature="e#970#971#0" expanded="true" />
+            <element signature="e#1007#1008#0" expanded="true" />
+            <element signature="e#1039#1040#0" expanded="true" />
+            <element signature="e#1090#1091#0" expanded="true" />
+            <element signature="e#1132#1133#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/repo/DKUserRepo.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/CreateDKRoleRequest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
-          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <caret line="8" column="25" lean-forward="true" selection-start-line="5" selection-start-column="4" selection-end-line="8" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/repo/MenuRepo.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/CreateDKStoreResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="83" lean-forward="false" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="83" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/CreateDKRoleResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="31" lean-forward="false" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="31" />
+          <folding>
+            <element signature="e#448#449#0" expanded="true" />
+            <element signature="e#487#488#0" expanded="true" />
+            <element signature="e#540#541#0" expanded="true" />
+            <element signature="e#588#589#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/CreateDKCatagoryResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+          <folding>
+            <element signature="e#470#471#0" expanded="true" />
+            <element signature="e#513#514#0" expanded="true" />
+            <element signature="e#574#575#0" expanded="true" />
+            <element signature="e#630#631#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/QueryDKRoleRequest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
-          <caret line="20" column="42" lean-forward="false" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="42" />
+          <caret line="9" column="31" lean-forward="true" selection-start-line="3" selection-start-column="4" selection-end-line="9" selection-end-column="31" />
+          <folding>
+            <element signature="e#329#330#0" expanded="true" />
+            <element signature="e#359#360#0" expanded="true" />
+            <element signature="e#402#403#0" expanded="true" />
+            <element signature="e#440#441#0" expanded="true" />
+            <element signature="e#472#473#0" expanded="true" />
+            <element signature="e#503#504#0" expanded="true" />
+            <element signature="e#548#549#0" expanded="true" />
+            <element signature="e#588#589#0" expanded="true" />
+            <element signature="e#625#626#0" expanded="true" />
+            <element signature="e#658#659#0" expanded="true" />
+            <element signature="e#710#711#0" expanded="true" />
+            <element signature="e#754#755#0" expanded="true" />
+            <element signature="e#785#786#0" expanded="true" />
+            <element signature="e#812#813#0" expanded="true" />
+            <element signature="e#852#853#0" expanded="true" />
+            <element signature="e#884#885#0" expanded="true" />
+            <element signature="e#922#923#0" expanded="true" />
+            <element signature="e#955#956#0" expanded="true" />
+            <element signature="e#1008#1009#0" expanded="true" />
+            <element signature="e#1052#1053#0" expanded="true" />
+            <element signature="e#1085#1086#0" expanded="true" />
+            <element signature="e#1114#1115#0" expanded="true" />
+            <element signature="e#1158#1159#0" expanded="true" />
+            <element signature="e#1194#1195#0" expanded="true" />
+            <element signature="e#1232#1233#0" expanded="true" />
+            <element signature="e#1266#1267#0" expanded="true" />
+            <element signature="e#1320#1321#0" expanded="true" />
+            <element signature="e#1366#1367#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/QueryDKCatagoryRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+          <folding>
+            <element signature="e#301#302#0" expanded="true" />
+            <element signature="e#331#332#0" expanded="true" />
+            <element signature="e#374#375#0" expanded="true" />
+            <element signature="e#412#413#0" expanded="true" />
+            <element signature="e#444#445#0" expanded="true" />
+            <element signature="e#475#476#0" expanded="true" />
+            <element signature="e#520#521#0" expanded="true" />
+            <element signature="e#560#561#0" expanded="true" />
+            <element signature="e#597#598#0" expanded="true" />
+            <element signature="e#630#631#0" expanded="true" />
+            <element signature="e#682#683#0" expanded="true" />
+            <element signature="e#726#727#0" expanded="true" />
+            <element signature="e#757#758#0" expanded="true" />
+            <element signature="e#784#785#0" expanded="true" />
+            <element signature="e#824#825#0" expanded="true" />
+            <element signature="e#856#857#0" expanded="true" />
+            <element signature="e#889#890#0" expanded="true" />
+            <element signature="e#918#919#0" expanded="true" />
+            <element signature="e#962#963#0" expanded="true" />
+            <element signature="e#998#999#0" expanded="true" />
+            <element signature="e#1036#1037#0" expanded="true" />
+            <element signature="e#1070#1071#0" expanded="true" />
+            <element signature="e#1124#1125#0" expanded="true" />
+            <element signature="e#1170#1171#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/QueryDKRoleResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="66" column="5" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="66" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#763#764#0" expanded="true" />
+            <element signature="e#798#799#0" expanded="true" />
+            <element signature="e#848#849#0" expanded="true" />
+            <element signature="e#888#889#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/QueryDKCatagoryResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="43" lean-forward="true" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#826#827#0" expanded="true" />
+            <element signature="e#880#881#0" expanded="true" />
+            <element signature="e#920#921#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/QueryDKRoleForSelectRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="5" lean-forward="true" selection-start-line="3" selection-start-column="4" selection-end-line="11" selection-end-column="5" />
+          <folding>
+            <element signature="e#158#159#0" expanded="true" />
+            <element signature="e#190#191#0" expanded="true" />
+            <element signature="e#241#242#0" expanded="true" />
+            <element signature="e#283#284#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/QueryDKCatagoryForSelectRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="5" lean-forward="false" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+          <folding>
+            <element signature="e#162#163#0" expanded="false" />
+            <element signature="e#194#195#0" expanded="false" />
+            <element signature="e#245#246#0" expanded="false" />
+            <element signature="e#287#288#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/QueryDKRoleForSelectResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="26" column="5" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="26" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/repo/ProjectRepo.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/QueryDKCatagoryForSelectResponse.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="19" column="52" lean-forward="true" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="52" />
+        <state relative-caret-position="315">
+          <caret line="21" column="9" lean-forward="true" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#684#685#0" expanded="true" />
+            <element signature="e#719#720#0" expanded="true" />
+            <element signature="e#773#774#0" expanded="true" />
+            <element signature="e#813#814#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/ModifyDKRoleRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="25" lean-forward="true" selection-start-line="3" selection-start-column="4" selection-end-line="7" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/domain/repo/DKMenuRepo.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/ModifyDKRoleResponse.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="18" column="4" lean-forward="true" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="81" />
+        <state relative-caret-position="240">
+          <caret line="20" column="5" lean-forward="true" selection-start-line="5" selection-start-column="4" selection-end-line="20" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/service/MenuService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/DKMenuRestController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="37">
-          <caret line="43" column="5" lean-forward="true" selection-start-line="41" selection-start-column="4" selection-end-line="43" selection-end-column="5" />
+        <state relative-caret-position="15">
+          <caret line="164" column="13" lean-forward="true" selection-start-line="164" selection-start-column="13" selection-end-line="164" selection-end-column="13" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/DKStoreRestController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="122" column="17" lean-forward="false" selection-start-line="122" selection-start-column="5" selection-end-line="122" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/DKRoleRestController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="165" column="42" lean-forward="true" selection-start-line="165" selection-start-column="42" selection-end-line="165" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/CreateDKMenuRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding>
-            <element signature="e#658#659#0" expanded="true" />
-            <element signature="e#690#691#0" expanded="true" />
-            <element signature="e#741#742#0" expanded="true" />
-            <element signature="e#783#784#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/common/ErrorNum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="28" column="42" lean-forward="true" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
+        <state relative-caret-position="494">
+          <caret line="302" column="5" lean-forward="true" selection-start-line="43" selection-start-column="4" selection-end-line="302" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/service/DKMenuService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="37" column="69" lean-forward="true" selection-start-line="37" selection-start-column="69" selection-end-line="37" selection-end-column="69" />
+        <state relative-caret-position="345">
+          <caret line="38" column="5" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="38" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/ModifyDKMenuRequest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/service/DKRoleService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+        <state relative-caret-position="60">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/service/DKCatagoryService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="39" column="1" lean-forward="true" selection-start-line="39" selection-start-column="1" selection-end-line="39" selection-end-column="1" />
           <folding>
-            <element signature="e#803#804#0" expanded="true" />
-            <element signature="e#835#836#0" expanded="true" />
-            <element signature="e#886#887#0" expanded="true" />
-            <element signature="e#928#929#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/DKMenuRestController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/ModifyDKCatagoryResponse.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-55">
-          <caret line="164" column="13" lean-forward="true" selection-start-line="164" selection-start-column="13" selection-end-line="164" selection-end-column="13" />
+        <state relative-caret-position="240">
+          <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/ModifyDKCatagoryRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="32" column="30" lean-forward="true" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
+          <folding>
+            <element signature="e#222#223#0" expanded="true" />
+            <element signature="e#247#248#0" expanded="true" />
+            <element signature="e#284#285#0" expanded="true" />
+            <element signature="e#312#313#0" expanded="true" />
+            <element signature="e#343#344#0" expanded="true" />
+            <element signature="e#370#371#0" expanded="true" />
+            <element signature="e#410#411#0" expanded="true" />
+            <element signature="e#442#443#0" expanded="true" />
+            <element signature="e#479#480#0" expanded="true" />
+            <element signature="e#511#512#0" expanded="true" />
+            <element signature="e#562#563#0" expanded="true" />
+            <element signature="e#604#605#0" expanded="true" />
+            <element signature="e#664#665#0" expanded="true" />
+            <element signature="e#706#707#0" expanded="true" />
+            <element signature="e#740#741#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/bean/CreateDKCatagoryRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="29" lean-forward="false" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
+          <folding>
+            <element signature="e#226#227#0" expanded="true" />
+            <element signature="e#266#267#0" expanded="true" />
+            <element signature="e#298#299#0" expanded="true" />
+            <element signature="e#335#336#0" expanded="true" />
+            <element signature="e#367#368#0" expanded="true" />
+            <element signature="e#418#419#0" expanded="true" />
+            <element signature="e#460#461#0" expanded="true" />
+            <element signature="e#492#493#0" expanded="true" />
+            <element signature="e#520#521#0" expanded="true" />
+            <element signature="e#562#563#0" expanded="true" />
+            <element signature="e#596#597#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/duofuen/permission/controller/DKCatagoryRestController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="186" column="35" lean-forward="true" selection-start-line="186" selection-start-column="35" selection-end-line="186" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
