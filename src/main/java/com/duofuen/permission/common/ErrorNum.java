@@ -33,6 +33,7 @@ public enum ErrorNum {
     INVALID_PARAM_PHONE_LENGTH(231, "电话号码需要为11位数字"),
     INVALID_PARAM_ID(230, "id参数无效"),
     INVALID_PARAM_PHONE_EXIST(232, "电话号码重复"),
+    INVALID_PARAM_INTERVAL(233, "收费间隔参数错误"),
     UNKNOWN(500, "未知错误");
     private int code;
     private String msg;
