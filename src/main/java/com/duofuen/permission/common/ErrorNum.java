@@ -21,7 +21,6 @@ public enum ErrorNum {
     INVALID_PARAM_ROLE_CODE_EMPTY(217 , "code参数无效"),
     INVALID_PARAM_PJO_ID_OR_MENU_ID(218, "menuId或者projectId参数无效"),
     INVALID_PARAM_ADDRESS(219 , "address参数无效"),
-    INVALID_PARAM_PHONE(220 , "phone参数无效"),
     INVALID_PARAM_TOKEN(221 , "token参数无效"),
     INVALID_PARAM_HEAD(222 , "head参数无效"),
     INVALID_PARAM_PERMISSION(223 , "权限错误"),
@@ -30,6 +29,10 @@ public enum ErrorNum {
     INVALID_PARAM_EXIST(226, "库存参数无效"),
     INVALID_PARAM_CATAGORY(227, "商品类别参数无效"),
     INVALID_PARAM_PRICE(228, "单价参数无效"),
+    INVALID_PARAM_PHONE(229, "电话号码参数无效"),
+    INVALID_PARAM_PHONE_LENGTH(231, "电话号码需要为11位数字"),
+    INVALID_PARAM_ID(230, "id参数无效"),
+    INVALID_PARAM_PHONE_EXIST(232, "电话号码重复"),
     UNKNOWN(500, "未知错误");
     private int code;
     private String msg;
