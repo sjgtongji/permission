@@ -287,6 +287,9 @@ public class DKMenuRestController {
                 menus.add(menu2);
                 menus.add(menu3);
                 menus.add(menu4);
+                response.setResult(ErrorNum.SUCCESS);
+                response.getData().setMenus(menus);
+                return response;
             }
             Optional<DKRole> role = dkRoleService.findByIdAndDeleted(user.getDkRoleId() , false);
             if(!role.isPresent()){

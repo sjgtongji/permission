@@ -27,6 +27,9 @@ public enum ErrorNum {
     INVALID_PARAM_PERMISSION(223 , "权限错误"),
     INVALID_PARAM_PATH(224, "path参数无效"),
     INVALID_PARAM_STORE_ID(225, "门店参数无效"),
+    INVALID_PARAM_EXIST(226, "库存参数无效"),
+    INVALID_PARAM_CATAGORY(227, "商品类别参数无效"),
+    INVALID_PARAM_PRICE(228, "单价参数无效"),
     UNKNOWN(500, "未知错误");
     private int code;
     private String msg;

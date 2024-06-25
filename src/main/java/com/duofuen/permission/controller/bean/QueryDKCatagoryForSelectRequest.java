@@ -1,13 +1,13 @@
 package com.duofuen.permission.controller.bean;
 
 public class QueryDKCatagoryForSelectRequest {
-    private Integer dkStoreId;
+    private String token;
 
-    public Integer getDkStoreId() {
-        return dkStoreId;
+    public String getToken() {
+        return token;
     }
 
-    public void setDkStoreId(Integer dkStoreId) {
-        this.dkStoreId = dkStoreId;
+    public void setToken(String token) {
+        this.token = token;
     }
 }

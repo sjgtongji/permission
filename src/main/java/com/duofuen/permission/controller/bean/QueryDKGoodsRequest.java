@@ -1,12 +1,12 @@
 package com.duofuen.permission.controller.bean;
 
-public class QueryDKCatagoryRequest {
+public class QueryDKGoodsRequest {
     private int current = 1;
     private int pageSize = 20;
     private String createTime;
     private String name = "";
     private String sorter = "";
-    private String dkStoreName;
+    private String dkCatagoryName;
     private String token;
 
     public String getToken() {
@@ -57,11 +57,11 @@ public class QueryDKCatagoryRequest {
         this.sorter = sorter;
     }
 
-    public String getDkStoreName() {
-        return dkStoreName;
+    public String getDkCatagoryName() {
+        return dkCatagoryName;
     }
 
-    public void setDkStoreName(String dkStoreName) {
-        this.dkStoreName = dkStoreName;
+    public void setDkCatagoryName(String dkCatagoryName) {
+        this.dkCatagoryName = dkCatagoryName;
     }
 }
