@@ -34,6 +34,10 @@ public enum ErrorNum {
     INVALID_PARAM_ID(230, "id参数无效"),
     INVALID_PARAM_PHONE_EXIST(232, "电话号码重复"),
     INVALID_PARAM_INTERVAL(233, "收费间隔参数错误"),
+    INVALID_PARAM_RECHARGE_VALUE(234, "充值金额参数错误"),
+    INVALID_PARAM_EXTRA_VALUE(235, "赠送金额参数错误"),
+    INVALID_PARAM_TOTAL_VALUE(236, "充值总金额参数错误"),
+    INVALID_PARAM_MEMBER_ID(236, "会员参数错误"),
     UNKNOWN(500, "未知错误");
     private int code;
     private String msg;
