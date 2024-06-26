@@ -43,7 +43,7 @@ public class DKGoods {
 
     private String dkCatagoryName;
 
-    private boolean payByCash;
+    private boolean payByCash = true;
 
     public Integer getId() {
         return id;

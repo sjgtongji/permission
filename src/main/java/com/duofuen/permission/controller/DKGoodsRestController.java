@@ -114,6 +114,7 @@ public class DKGoodsRestController {
             role.setName(request.getName());
             role.setExist(request.getExist());
             role.setPrice(request.getPrice());
+            role.setPayByCash(request.isPayByCash());
             DKGoods result = dkGoodsService.save(role);
             if(result != null){
                 response.getData().setDkGoodsId(result.getId());
@@ -195,6 +196,7 @@ public class DKGoodsRestController {
             role.setName(request.getName());
             role.setExist(request.getExist());
             role.setPrice(request.getPrice());
+            role.setPayByCash(request.isPayByCash());
             DKGoods result = dkGoodsService.save(role);
             if(result != null ){
                 response.getData().setId(result.getId());

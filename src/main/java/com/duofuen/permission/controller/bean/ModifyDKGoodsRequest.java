@@ -6,6 +6,15 @@ public class ModifyDKGoodsRequest {
     private String token;
     private Integer exist;
     private Double price;
+    private boolean payByCash;
+
+    public boolean isPayByCash() {
+        return payByCash;
+    }
+
+    public void setPayByCash(boolean payByCash) {
+        this.payByCash = payByCash;
+    }
 
     public Double getPrice() {
         return price;
