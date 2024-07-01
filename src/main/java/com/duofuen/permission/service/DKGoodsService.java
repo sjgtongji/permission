@@ -37,4 +37,7 @@ public class DKGoodsService {
     public List<DKGoods> findAllByDkCatagoryId(Integer catagoryId){
         return goodsRepo.findAllByDkCatagoryIdAndDeleted(catagoryId, false);
     }
+    public List<DKGoods>  findAllByDkStoreIdAndDkCatagoryIdAndDeleted(Integer dkStoreId, Integer catagoryId, boolean deleted){
+        return goodsRepo.findAllByDkStoreIdAndDkCatagoryIdAndDeleted(dkStoreId , catagoryId, false);
+    }
 }

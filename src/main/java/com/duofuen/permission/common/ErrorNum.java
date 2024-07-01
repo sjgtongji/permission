@@ -37,7 +37,11 @@ public enum ErrorNum {
     INVALID_PARAM_RECHARGE_VALUE(234, "充值金额参数错误"),
     INVALID_PARAM_EXTRA_VALUE(235, "赠送金额参数错误"),
     INVALID_PARAM_TOTAL_VALUE(236, "充值总金额参数错误"),
-    INVALID_PARAM_MEMBER_ID(236, "会员参数错误"),
+    INVALID_PARAM_MEMBER_ID(237, "会员参数错误"),
+    INVALID_PARAM_TABLE_ID(238, "球桌参数错误"),
+    INVALID_PARAM_GOODS_ID(239, "商品参数错误"),
+    INVALID_PARAM_GOODS_QUALITY(240, "商品数量参数错误"),
+    MEMBER_VALUE_NOT_ENOUGH(241, "会员卡余额不足"),
     UNKNOWN(500, "未知错误");
     private int code;
     private String msg;

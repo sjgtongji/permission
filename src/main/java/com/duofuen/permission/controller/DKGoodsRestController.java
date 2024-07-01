@@ -234,7 +234,7 @@ public class DKGoodsRestController {
                 return response;
             }
             Integer dkStoreId = dkUser.getDkStoreId();
-            List<DKGoods> roles = dkGoodsService.findAllByDkCatagoryId(request.getDkCatagoryId());
+            List<DKGoods> roles = dkGoodsService.findAllByDkStoreIdAndDkCatagoryIdAndDeleted(dkStoreId , request.getDkCatagoryId(), false);
             response.getData().setData(roles);
             log.error("查询商品成功！");
             return response;

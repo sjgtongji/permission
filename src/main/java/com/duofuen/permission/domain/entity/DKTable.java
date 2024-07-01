@@ -40,6 +40,16 @@ public class DKTable {
 
     private String dkStoreName;
 
+    private long startTime;
+
+    public long getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(long startTime) {
+        this.startTime = startTime;
+    }
+
     public Integer getId() {
         return id;
     }
